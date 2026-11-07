@@ -6,16 +6,26 @@
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 24px;
+  padding: 60px 20px 40px;
+  box-sizing: border-box;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   z-index: 20;
   transition: opacity 1.6s var(--ease-cinematic), visibility 0s linear 1.6s;
+}
+
+.scene2-container::-webkit-scrollbar {
+  display: none;
 }
 
 .scene2-container.active {
@@ -29,9 +39,11 @@
 .scene2-stage {
   width: 100%;
   max-width: 580px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
 }
@@ -364,24 +376,35 @@
   transform: translateY(0);
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for mobile */
 @media (max-width: 480px) {
   .scene2-container {
-    padding: 28px 18px;
+    padding: 72px 16px 40px;
+    justify-content: flex-start;
+  }
+
+  .scene2-stage {
+    margin: auto auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .scene2-title {
+    font-size: clamp(1.85rem, 7.5vw, 2.5rem);
   }
 
   .scene2-cake-viewport {
-    max-width: 260px;
-    margin: 4px 0 18px;
+    max-width: 250px;
+    margin: 4px auto 16px;
   }
 
   .scene2-candle-ambient {
-    width: 220px;
-    height: 220px;
+    width: 210px;
+    height: 210px;
   }
 
   .scene2-instruction {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     padding: 0 10px;
   }
 

@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 2. Prepare and reveal new container
       if (newContainer) {
-        newContainer.style.display = (targetIndex === 1 ? 'flex' : 'block');
+        newContainer.style.display = (targetIndex === 1 || targetIndex === 2 ? 'flex' : 'block');
         newContainer.style.pointerEvents = 'auto';
         newContainer.scrollTop = 0;
         void newContainer.offsetWidth; // Force reflow
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         containers.forEach((c, idx) => {
           if (!c) return;
           if (idx === initialScene) {
-            c.style.display = (initialScene === 1 ? 'flex' : 'block');
+            c.style.display = (initialScene === 1 || initialScene === 2 ? 'flex' : 'block');
             c.style.opacity = '1';
             c.classList.add('active');
             if (sceneInstances[initialScene]?.startScene) {

@@ -309,13 +309,17 @@
 
   .scene-bottom-nav {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
     width: 100%;
+    margin-top: 28px;
   }
 
   .scene-btn-back,
   .scene-btn-next-highlight {
     width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
     justify-content: center;
     text-align: center;
   }
