@@ -1,0 +1,596 @@
+/* scene4.css - Scene 4: The World of Conversations & Trust */
+
+.scene4-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 40;
+  background-color: var(--color-bg);
+  transition: opacity 1.8s var(--ease-cinematic), visibility 0s linear 1.8s;
+}
+
+.scene4-container.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 1.8s var(--ease-cinematic);
+}
+
+/* Custom Scrollbar for Scene 4 */
+.scene4-container::-webkit-scrollbar {
+  width: 5px;
+}
+.scene4-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scene4-container::-webkit-scrollbar-thumb {
+  background: rgba(216, 184, 141, 0.2);
+  border-radius: 4px;
+}
+.scene4-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(216, 184, 141, 0.4);
+}
+
+/* Ambient Phone-Glow Atmosphere */
+.scene4-ambient-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle 480px at 50% 30%, rgba(70, 52, 40, 0.35) 0%, transparent 75%),
+    radial-gradient(circle 400px at 50% 70%, rgba(35, 30, 38, 0.4) 0%, transparent 80%);
+  opacity: 0.8;
+}
+
+/* Main Scroll Flow */
+.scene4-scroll-flow {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 80px 24px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 1. Prologue ("And somewhere between all those years…") */
+.scene4-prologue-section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.scene4-prologue-line1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.8s var(--ease-cinematic), transform 1.8s var(--ease-cinematic);
+}
+
+.scene4-prologue-line2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5.5vw, 3.2rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 2s var(--ease-cinematic), transform 2s var(--ease-cinematic);
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.25);
+}
+
+.scene4-prologue-line1.revealed,
+.scene4-prologue-line2.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene4-scroll-hint {
+  margin-top: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1.6s var(--ease-cinematic) 1s;
+}
+
+.scene4-scroll-hint.revealed {
+  opacity: 1;
+}
+
+.scene4-scroll-hint-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.scene4-scroll-hint-arrow {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-text-subtle);
+  stroke-width: 1.5;
+  fill: none;
+  animation: bounceHint 2.4s ease-in-out infinite;
+}
+
+/* 2. Cinematic Conversation Whisper Stage */
+.scene4-conversation-stage {
+  width: 100%;
+  max-width: 500px;
+  margin: 60px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.scene4-chat-bubble {
+  position: relative;
+  max-width: 82%;
+  padding: 16px 22px;
+  border-radius: var(--border-radius-lg);
+  font-family: var(--font-body);
+  font-size: 1.025rem;
+  font-weight: 350;
+  line-height: 1.5;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene4-chat-bubble.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Alternating subtle conversation whispers (two sides of connection) */
+.scene4-chat-bubble.left {
+  align-self: flex-start;
+  background: rgba(22, 23, 28, 0.75);
+  border: 1px solid rgba(216, 184, 141, 0.16);
+  color: var(--color-text-main);
+  border-bottom-left-radius: 4px;
+}
+
+.scene4-chat-bubble.right {
+  align-self: flex-end;
+  background: rgba(36, 30, 26, 0.75);
+  border: 1px solid rgba(226, 186, 140, 0.28);
+  color: #f7efe6;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(216, 184, 141, 0.08);
+}
+
+/* Typing indicator dot ripple */
+.scene4-typing-indicator {
+  display: inline-flex;
+  gap: 5px;
+  padding: 10px 18px;
+  background: rgba(18, 19, 23, 0.6);
+  border: 1px solid rgba(216, 184, 141, 0.1);
+  border-radius: 20px;
+  align-self: flex-start;
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 1s var(--ease-cinematic);
+}
+
+.scene4-typing-indicator.in-view {
+  opacity: 0.75;
+}
+
+.scene4-typing-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent-gold);
+  animation: typingPulse 1.6s ease-in-out infinite;
+}
+.scene4-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.scene4-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* General Card Style for Scene 4 */
+.scene4-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  margin: 60px 0;
+  padding: 42px 34px;
+  background: rgba(18, 19, 23, 0.7);
+  border: 1px solid rgba(216, 184, 141, 0.14);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 38px -5px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.04);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic), border-color 0.8s ease;
+}
+
+.scene4-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: rgba(216, 184, 141, 0.28);
+}
+
+/* 3. The Trust Moment */
+.scene4-trust-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.8vw, 1.85rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.scene4-trust-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.35;
+  margin-bottom: 30px;
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.2);
+}
+
+.scene4-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.scene4-trust-pill {
+  padding: 14px 16px;
+  background: rgba(26, 24, 25, 0.6);
+  border: 1px solid rgba(216, 184, 141, 0.14);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 350;
+  color: var(--color-text-main);
+  transition: border-color var(--duration-fast);
+}
+
+.scene4-trust-pill:hover {
+  border-color: rgba(216, 184, 141, 0.35);
+}
+
+.scene4-trust-realization {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.scene4-trust-gratitude {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3.4vw, 1.55rem);
+  font-style: italic;
+  font-weight: 500;
+  color: #dfc29e;
+  line-height: 1.6;
+  padding-top: 20px;
+  border-top: 1px solid rgba(216, 184, 141, 0.14);
+  text-shadow: 0 0 30px rgba(223, 194, 158, 0.22);
+}
+
+/* 4. The First-Person Connection */
+.scene4-firstperson-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.6vw, 1.75rem);
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+
+.scene4-firstperson-highlight {
+  font-family: var(--font-serif);
+  font-size: clamp(1.65rem, 4.2vw, 2.2rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.35;
+  margin-bottom: 24px;
+}
+
+.scene4-firstperson-interlude {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--color-accent-amber);
+  margin-bottom: 12px;
+}
+
+.scene4-firstperson-smile {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+  font-style: italic;
+  font-weight: 450;
+  color: var(--color-text-main);
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.scene4-firstperson-grounding {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(216, 184, 141, 0.14);
+}
+
+.scene4-grounding-line1 {
+  font-family: var(--font-body);
+  font-size: 0.975rem;
+  font-weight: 350;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.scene4-grounding-line2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3.2vw, 1.45rem);
+  font-style: italic;
+  color: #dfc29e;
+  line-height: 1.55;
+}
+
+/* 5. Playful Contrast / Humour Section */
+.scene4-humour-header {
+  margin: 50px 0 30px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene4-humour-header.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene4-humour-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 4vw, 1.95rem);
+  font-style: italic;
+  font-weight: 450;
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+.scene4-humour-sub {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 350;
+  color: var(--color-accent-amber);
+}
+
+.scene4-humour-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 60px;
+}
+
+.scene4-humour-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  background: rgba(22, 21, 24, 0.65);
+  border: 1px solid rgba(216, 184, 141, 0.14);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-body);
+  font-size: 0.975rem;
+  font-weight: 350;
+  color: var(--color-text-main);
+  line-height: 1.5;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 1s var(--ease-cinematic);
+}
+
+.scene4-humour-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene4-humour-card:hover {
+  border-color: rgba(216, 184, 141, 0.35);
+  background: rgba(28, 25, 27, 0.75);
+  transform: translateX(4px);
+}
+
+.scene4-humour-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-amber);
+  flex-shrink: 0;
+}
+
+/* 6. Calm Ending of Scene 4 */
+.scene4-card-conclusion {
+  padding: 54px 36px;
+  background: radial-gradient(circle at 50% 30%, rgba(55, 42, 32, 0.55) 0%, rgba(18, 19, 23, 0.8) 75%);
+  border-color: rgba(216, 184, 141, 0.3);
+  box-shadow: 0 12px 45px -6px rgba(0, 0, 0, 0.65), 0 0 35px rgba(216, 184, 141, 0.12);
+  margin-top: 30px;
+}
+
+.scene4-conclusion-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.6vw, 1.75rem);
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.scene4-conclusion-body {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4.2vw, 2.15rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+
+.scene4-conclusion-hope {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+  font-style: italic;
+  color: #dfc29e;
+  line-height: 1.5;
+  margin-bottom: 26px;
+}
+
+.scene4-conclusion-anchor {
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 3.8vw, 1.95rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-accent-amber);
+  line-height: 1.45;
+  padding-top: 24px;
+  border-top: 1px solid rgba(216, 184, 141, 0.18);
+  text-shadow: 0 0 35px rgba(226, 186, 140, 0.28);
+}
+
+/* Handoff to Scene 5 */
+.scene4-handoff-point {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.scene4-handoff-line {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(216, 184, 141, 0.5), transparent);
+}
+
+.scene4-handoff-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  animation: pulseHandoff 3.5s ease-in-out infinite;
+}
+
+/* Scene 3 Continue Button */
+.scene3-continue-prompt {
+  margin-top: 28px;
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid rgba(216, 184, 141, 0.22);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-soft);
+}
+
+.scene3-continue-prompt:hover {
+  color: var(--color-text-main);
+  border-color: rgba(216, 184, 141, 0.5);
+  box-shadow: 0 0 16px rgba(216, 184, 141, 0.15);
+}
+
+/* Mobile & Touch Responsive */
+@media (max-width: 480px) {
+  .scene4-scroll-flow {
+    padding: 60px 16px 120px;
+  }
+
+  .scene4-card {
+    padding: 30px 20px;
+    margin: 45px 0;
+  }
+
+  .scene4-trust-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .scene4-chat-bubble {
+    max-width: 90%;
+    font-size: 0.975rem;
+    padding: 14px 18px;
+  }
+
+  .scene4-humour-card {
+    padding: 16px 18px;
+    font-size: 0.925rem;
+  }
+
+  .scene4-card-conclusion {
+    padding: 38px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene4-card,
+  .scene4-chat-bubble,
+  .scene4-humour-card,
+  .scene4-prologue-line1,
+  .scene4-prologue-line2 {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+  .scene4-scroll-hint-arrow,
+  .scene4-handoff-text,
+  .scene4-typing-dot {
+    animation: none;
+  }
+}
+

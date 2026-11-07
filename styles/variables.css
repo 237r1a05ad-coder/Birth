@@ -1,0 +1,61 @@
+/* variables.css - Design tokens, typography, atmospheric lighting */
+:root {
+  /* Color Palette */
+  --color-bg: #090a0c;
+  --color-bg-elevated: rgba(22, 21, 23, 0.6);
+  --color-bg-input: rgba(255, 255, 255, 0.035);
+  --color-bg-input-focus: rgba(255, 255, 255, 0.055);
+  
+  --color-text-main: #f5eee4;
+  --color-text-muted: #9c9486;
+  --color-text-subtle: #6e675c;
+  --color-text-placeholder: rgba(160, 150, 138, 0.45);
+
+  --color-accent-gold: #d8b88d;
+  --color-accent-amber: #e2ba8c;
+  --color-accent-soft: rgba(216, 184, 141, 0.12);
+  --color-accent-border: rgba(216, 184, 141, 0.22);
+  --color-accent-glow: rgba(216, 184, 141, 0.15);
+
+  /* Gentle feedback tone (warm apricot/rose amber, never harsh red) */
+  --color-feedback-gentle: #d99f82;
+  --color-feedback-border: rgba(217, 159, 130, 0.35);
+  --color-feedback-bg: rgba(217, 159, 130, 0.06);
+
+  /* Hairlines and borders */
+  --border-hairline: 1px solid rgba(220, 206, 188, 0.13);
+  --border-focus: 1px solid rgba(216, 184, 141, 0.45);
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 20px;
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", "Newsreader", "Playfair Display", Georgia, serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+
+  /* Elevation Shadows */
+  --shadow-input: 0 4px 20px -2px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  --shadow-input-focus: 0 0 0 1px rgba(216, 184, 141, 0.35), 0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 0 24px rgba(216, 184, 141, 0.12);
+  --shadow-button-hover: 0 6px 20px -2px rgba(0, 0, 0, 0.45), 0 0 16px rgba(216, 184, 141, 0.18);
+
+  /* Animation Timings & Easing */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.2, 1);
+  
+  --duration-fast: 220ms;
+  --duration-normal: 400ms;
+  --duration-slow: 750ms;
+  --duration-cinematic: 1200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 1ms !important;
+    --duration-normal: 1ms !important;
+    --duration-slow: 1ms !important;
+    --duration-cinematic: 1ms !important;
+  }
+}
+

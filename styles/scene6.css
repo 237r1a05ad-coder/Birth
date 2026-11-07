@@ -1,0 +1,522 @@
+/* scene6.css - Scene 6: Things I Never Say Enough */
+
+.scene6-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 60;
+  background-color: var(--color-bg);
+  transition: opacity 1.8s var(--ease-cinematic), visibility 0s linear 1.8s;
+}
+
+.scene6-container.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 1.8s var(--ease-cinematic);
+}
+
+/* Custom Scrollbar */
+.scene6-container::-webkit-scrollbar {
+  width: 5px;
+}
+.scene6-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scene6-container::-webkit-scrollbar-thumb {
+  background: rgba(216, 184, 141, 0.2);
+  border-radius: 4px;
+}
+.scene6-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(216, 184, 141, 0.4);
+}
+
+/* Ambient Letter-Paper Atmosphere */
+.scene6-ambient-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle 520px at 50% 25%, rgba(68, 48, 33, 0.38) 0%, transparent 75%),
+    radial-gradient(circle 450px at 50% 75%, rgba(38, 32, 40, 0.35) 0%, transparent 80%);
+  opacity: 0.85;
+}
+
+/* Scroll Flow Layout */
+.scene6-scroll-flow {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 80px 24px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 1. Prologue Stage ("There are some things… That I probably don't say enough.") */
+.scene6-prologue-section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.scene6-prologue-line1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.8s var(--ease-cinematic), transform 1.8s var(--ease-cinematic);
+}
+
+.scene6-prologue-line2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5.5vw, 3.2rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.3;
+  margin-bottom: 18px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 2s var(--ease-cinematic), transform 2s var(--ease-cinematic);
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.25);
+}
+
+.scene6-prologue-line3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.6vw, 1.85rem);
+  font-style: italic;
+  font-weight: 400;
+  color: #dfc29e;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.8s var(--ease-cinematic), transform 1.8s var(--ease-cinematic);
+}
+
+.scene6-prologue-line1.revealed,
+.scene6-prologue-line2.revealed,
+.scene6-prologue-line3.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene6-scroll-hint {
+  margin-top: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1.6s var(--ease-cinematic) 1s;
+}
+
+.scene6-scroll-hint.revealed {
+  opacity: 1;
+}
+
+.scene6-scroll-hint-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.scene6-scroll-hint-arrow {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-text-subtle);
+  stroke-width: 1.5;
+  fill: none;
+  animation: bounceHint 2.4s ease-in-out infinite;
+}
+
+/* 2. Main Introduction Header */
+.scene6-header {
+  text-align: center;
+  margin-bottom: 50px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene6-header.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene6-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5.8vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--color-text-main);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.22);
+}
+
+.scene6-subheading {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  font-weight: 350;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* 3. Interactive Personal Notes (5 Note Cards) */
+.scene6-notes-stack {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 70px;
+}
+
+.scene6-note-card {
+  position: relative;
+  width: 100%;
+  background: rgba(20, 19, 23, 0.7);
+  border: 1px solid rgba(216, 184, 141, 0.16);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.1s var(--ease-cinematic);
+}
+
+.scene6-note-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene6-note-card:hover {
+  border-color: rgba(216, 184, 141, 0.3);
+  box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.6), 0 0 24px rgba(216, 184, 141, 0.08);
+}
+
+.scene6-note-card.open {
+  border-color: rgba(226, 186, 140, 0.42);
+  background: rgba(26, 23, 27, 0.85);
+  box-shadow: 0 16px 42px -6px rgba(0, 0, 0, 0.7), 0 0 28px rgba(216, 184, 141, 0.14);
+}
+
+/* Note Header Button (Accessible Click & Toggle) */
+.scene6-note-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+  transition: background var(--duration-fast);
+}
+
+.scene6-note-toggle:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.scene6-note-toggle:focus-visible {
+  outline: 2px solid var(--color-accent-amber);
+  outline-offset: -2px;
+}
+
+.scene6-note-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scene6-note-number {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  opacity: 0.8;
+}
+
+.scene6-note-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3.4vw, 1.65rem);
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.3;
+}
+
+/* Unfold Indicator Icon */
+.scene6-note-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(216, 184, 141, 0.08);
+  border: 1px solid rgba(216, 184, 141, 0.2);
+  color: var(--color-accent-amber);
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease-soft), background 0.3s ease, border-color 0.3s ease;
+}
+
+.scene6-note-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.scene6-note-card.open .scene6-note-icon {
+  transform: rotate(180deg);
+  background: rgba(216, 184, 141, 0.2);
+  border-color: rgba(216, 184, 141, 0.45);
+}
+
+/* Note Content Drawer */
+.scene6-note-drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ease-cinematic);
+}
+
+.scene6-note-card.open .scene6-note-drawer {
+  grid-template-rows: 1fr;
+}
+
+.scene6-note-content-inner {
+  overflow: hidden;
+  padding: 0 28px 26px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
+}
+
+.scene6-note-card.open .scene6-note-content-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene6-note-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(216, 184, 141, 0.25), transparent);
+  margin-bottom: 18px;
+}
+
+.scene6-note-text {
+  font-family: var(--font-body);
+  font-size: 1.025rem;
+  font-weight: 350;
+  line-height: 1.75;
+  color: #ede4d8;
+  white-space: pre-line;
+}
+
+/* 4. Small Emotional Moment (The 6th Class Anchor) */
+.scene6-card-moment {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 30px 0 50px;
+  padding: 46px 36px;
+  background: rgba(18, 19, 23, 0.72);
+  border: 1px solid rgba(216, 184, 141, 0.18);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 38px -5px rgba(0, 0, 0, 0.55);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene6-card-moment.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene6-moment-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.6vw, 1.75rem);
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
+}
+
+.scene6-moment-gratitude {
+  font-family: var(--font-serif);
+  font-size: clamp(1.65rem, 4.3vw, 2.25rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.35;
+  margin-bottom: 24px;
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.22);
+}
+
+.scene6-moment-anchor {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 3.4vw, 1.6rem);
+  font-style: italic;
+  font-weight: 400;
+  color: #dfc29e;
+  line-height: 1.55;
+  padding-top: 22px;
+  border-top: 1px solid rgba(216, 184, 141, 0.14);
+}
+
+/* 5. Ending of Scene 6 (Ordinary Days Made Better) */
+.scene6-card-conclusion {
+  padding: 54px 36px;
+  background: radial-gradient(circle at 50% 30%, rgba(55, 42, 32, 0.55) 0%, rgba(18, 19, 23, 0.8) 75%);
+  border-color: rgba(216, 184, 141, 0.3);
+  box-shadow: 0 12px 45px -6px rgba(0, 0, 0, 0.65), 0 0 35px rgba(216, 184, 141, 0.12);
+  margin-top: 20px;
+}
+
+.scene6-conclusion-line1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-style: italic;
+  font-weight: 450;
+  color: var(--color-text-main);
+  line-height: 1.4;
+  margin-bottom: 22px;
+}
+
+.scene6-conclusion-line2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.8vw, 1.95rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-accent-amber);
+  line-height: 1.45;
+  text-shadow: 0 0 35px rgba(226, 186, 140, 0.28);
+}
+
+/* Handoff to Scene 7 */
+.scene6-handoff-point {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.scene6-handoff-line {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(216, 184, 141, 0.5), transparent);
+}
+
+.scene6-handoff-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  animation: pulseHandoff 3.5s ease-in-out infinite;
+}
+
+/* Scene 5 Continue Button */
+.scene5-continue-prompt {
+  margin-top: 28px;
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid rgba(216, 184, 141, 0.22);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-soft);
+}
+
+.scene5-continue-prompt:hover {
+  color: var(--color-text-main);
+  border-color: rgba(216, 184, 141, 0.5);
+  box-shadow: 0 0 16px rgba(216, 184, 141, 0.15);
+}
+
+/* Mobile & Touch Responsive */
+@media (max-width: 480px) {
+  .scene6-scroll-flow {
+    padding: 60px 16px 120px;
+  }
+
+  .scene6-note-toggle {
+    padding: 18px 20px;
+  }
+
+  .scene6-note-content-inner {
+    padding: 0 20px 22px;
+  }
+
+  .scene6-note-text {
+    font-size: 0.95rem;
+  }
+
+  .scene6-card-moment {
+    padding: 32px 20px;
+  }
+
+  .scene6-card-conclusion {
+    padding: 38px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene6-note-card,
+  .scene6-header,
+  .scene6-card-moment,
+  .scene6-prologue-line1,
+  .scene6-prologue-line2,
+  .scene6-prologue-line3 {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+  .scene6-scroll-hint-arrow,
+  .scene6-handoff-text {
+    animation: none;
+  }
+}
+

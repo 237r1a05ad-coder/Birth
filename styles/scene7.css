@@ -1,0 +1,605 @@
+/* scene7.css - Scene 7: The Personal Letter */
+
+.scene7-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 70;
+  background-color: var(--color-bg);
+  transition: opacity 1.8s var(--ease-cinematic), visibility 0s linear 1.8s;
+}
+
+.scene7-container.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 1.8s var(--ease-cinematic);
+}
+
+/* Custom Scrollbar */
+.scene7-container::-webkit-scrollbar {
+  width: 5px;
+}
+.scene7-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scene7-container::-webkit-scrollbar-thumb {
+  background: rgba(216, 184, 141, 0.2);
+  border-radius: 4px;
+}
+.scene7-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(216, 184, 141, 0.4);
+}
+
+/* Ambient Letter-Reading Atmosphere */
+.scene7-ambient-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle 560px at 50% 30%, rgba(68, 50, 36, 0.42) 0%, transparent 75%),
+    radial-gradient(circle 480px at 50% 75%, rgba(35, 28, 38, 0.4) 0%, transparent 80%);
+  opacity: 0.9;
+}
+
+/* Scroll Flow Layout */
+.scene7-scroll-flow {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 24px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 1. Prologue Stage ("And now… There is something I wanted to write to you.") */
+.scene7-prologue-section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.scene7-prologue-line1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.8s var(--ease-cinematic), transform 1.8s var(--ease-cinematic);
+}
+
+.scene7-prologue-line2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5.5vw, 3.2rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.3;
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 2s var(--ease-cinematic), transform 2s var(--ease-cinematic);
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.25);
+}
+
+.scene7-prologue-line3 {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  font-weight: 350;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.8s var(--ease-cinematic), transform 1.8s var(--ease-cinematic);
+}
+
+.scene7-prologue-line4 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.6vw, 1.85rem);
+  font-style: italic;
+  font-weight: 450;
+  color: #dfc29e;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.8s var(--ease-cinematic), transform 1.8s var(--ease-cinematic);
+}
+
+.scene7-prologue-line1.revealed,
+.scene7-prologue-line2.revealed,
+.scene7-prologue-line3.revealed,
+.scene7-prologue-line4.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene7-scroll-hint {
+  margin-top: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1.6s var(--ease-cinematic) 1s;
+}
+
+.scene7-scroll-hint.revealed {
+  opacity: 1;
+}
+
+.scene7-scroll-hint-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.scene7-scroll-hint-arrow {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-text-subtle);
+  stroke-width: 1.5;
+  fill: none;
+  animation: bounceHint 2.4s ease-in-out infinite;
+}
+
+/* 2. The Envelope Section */
+.scene7-envelope-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene7-envelope-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Envelope Container & 3D Perspective */
+.scene7-envelope-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.scene7-envelope {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  background: #f4efe6; /* Archival cream stationery paper */
+  border-radius: 8px;
+  box-shadow: 
+    0 22px 50px -10px rgba(0, 0, 0, 0.75),
+    0 8px 18px -4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(216, 184, 141, 0.28);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 24px;
+  transition: transform 0.4s var(--ease-soft), box-shadow 0.4s var(--ease-soft);
+}
+
+.scene7-envelope-box:hover .scene7-envelope {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 28px 60px -12px rgba(0, 0, 0, 0.85),
+    0 12px 24px -4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9),
+    0 0 0 1px rgba(216, 184, 141, 0.45);
+}
+
+/* Flap & Wax Seal */
+.scene7-envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: #ede6dc;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+}
+
+.scene7-envelope-box.opened .scene7-envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.scene7-wax-seal {
+  position: absolute;
+  top: 102px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d4b483, #9e8255 70%, #6e5836 100%);
+  border: 1px solid rgba(255, 240, 210, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b2c16;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  z-index: 4;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scene7-envelope-box.opened .scene7-wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  pointer-events: none;
+}
+
+/* Front Lettering on Envelope */
+.scene7-envelope-to {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4.5vw, 2.2rem);
+  font-style: italic;
+  font-weight: 600;
+  color: #2b2520;
+  letter-spacing: -0.01em;
+  margin-top: 40px;
+  margin-bottom: 8px;
+  z-index: 2;
+}
+
+.scene7-envelope-sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 350;
+  color: #7a6e63;
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+
+/* Discreet Open Prompt */
+.scene7-envelope-prompt {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-amber);
+  animation: pulsePrompt 2.5s ease-in-out infinite;
+  transition: opacity 0.4s ease;
+}
+
+.scene7-envelope-box.opened + .scene7-envelope-prompt {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pulsePrompt {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* 3. The Unfolded Letter Paper Sheet */
+.scene7-letter-sheet {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  margin: 20px 0 60px;
+  padding: 56px 44px;
+  background: #faf6f0; /* Warm fine archival writing sheet */
+  border-radius: 8px;
+  box-shadow: 
+    0 24px 65px -12px rgba(0, 0, 0, 0.85),
+    0 8px 24px -4px rgba(0, 0, 0, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    0 0 0 1px rgba(216, 184, 141, 0.3);
+  color: #2b2520;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  display: none;
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene7-letter-sheet.revealed {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Salutation */
+.scene7-salutation {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4.5vw, 2.3rem);
+  font-style: italic;
+  font-weight: 600;
+  color: #1a1512;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(80, 60, 40, 0.15);
+  padding-bottom: 16px;
+}
+
+/* Letter Prose */
+.scene7-prose {
+  font-family: var(--font-body);
+  font-size: clamp(1.025rem, 2.2vw, 1.1rem);
+  font-weight: 350;
+  line-height: 1.85;
+  color: #383029;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.scene7-prose p {
+  margin: 0;
+}
+
+/* Handwritten Style Signature */
+.scene7-signature-block {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(80, 60, 40, 0.15);
+}
+
+.scene7-valediction {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 350;
+  color: #63574c;
+  margin-bottom: 12px;
+}
+
+.scene7-signature {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 4.8vw, 2.45rem);
+  font-style: italic;
+  font-weight: 600;
+  color: #1a1512;
+  letter-spacing: 0.02em;
+}
+
+/* 4. Small Closing Message Beneath the Paper */
+.scene7-after-letter {
+  width: 100%;
+  max-width: 540px;
+  margin: 20px 0 50px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene7-after-letter.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene7-after-line1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.8vw, 1.8rem);
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.scene7-after-line2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 4vw, 1.95rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.4;
+  margin-bottom: 22px;
+}
+
+.scene7-keep-letter {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-amber);
+  opacity: 0.85;
+}
+
+/* 5. Ending of Scene 7 (Unwritten Chapters & Future Meeting) */
+.scene7-card-conclusion {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 30px 0 60px;
+  padding: 56px 38px;
+  background: radial-gradient(circle at 50% 30%, rgba(68, 50, 36, 0.6) 0%, rgba(18, 19, 23, 0.85) 75%);
+  border: 1px solid rgba(216, 184, 141, 0.32);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 50px -6px rgba(0, 0, 0, 0.7), 0 0 35px rgba(216, 184, 141, 0.15);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene7-card-conclusion.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene7-conclusion-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4.3vw, 2.15rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.35;
+  margin-bottom: 24px;
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.22);
+}
+
+.scene7-conclusion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.scene7-conclusion-item {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 350;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.scene7-conclusion-anchor {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3.6vw, 1.75rem);
+  font-style: italic;
+  font-weight: 500;
+  color: #dfc29e;
+  line-height: 1.5;
+  padding-top: 22px;
+  border-top: 1px solid rgba(216, 184, 141, 0.16);
+  text-shadow: 0 0 28px rgba(223, 194, 158, 0.22);
+}
+
+/* Handoff to Scene 8 */
+.scene7-handoff-point {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.scene7-handoff-line {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(216, 184, 141, 0.5), transparent);
+}
+
+.scene7-handoff-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  animation: pulseHandoff 3.5s ease-in-out infinite;
+}
+
+/* Scene 6 Continue Button */
+.scene6-continue-prompt,
+.scene7-continue-prompt {
+  margin-top: 28px;
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid rgba(216, 184, 141, 0.22);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-soft);
+}
+
+.scene6-continue-prompt:hover,
+.scene7-continue-prompt:hover {
+  color: var(--color-text-main);
+  border-color: rgba(216, 184, 141, 0.5);
+  box-shadow: 0 0 16px rgba(216, 184, 141, 0.15);
+}
+
+/* Mobile & Touch Responsive */
+@media (max-width: 480px) {
+  .scene7-scroll-flow {
+    padding: 60px 16px 120px;
+  }
+
+  .scene7-envelope {
+    height: 230px;
+    padding: 24px 18px;
+  }
+
+  .scene7-envelope-flap {
+    height: 100px;
+  }
+
+  .scene7-wax-seal {
+    top: 88px;
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .scene7-letter-sheet {
+    padding: 36px 20px;
+  }
+
+  .scene7-prose {
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .scene7-card-conclusion {
+    padding: 38px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene7-envelope-box,
+  .scene7-letter-sheet,
+  .scene7-card-conclusion,
+  .scene7-prologue-line1,
+  .scene7-prologue-line2 {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+  .scene7-scroll-hint-arrow,
+  .scene7-handoff-text,
+  .scene7-envelope-prompt {
+    animation: none;
+  }
+}

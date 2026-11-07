@@ -1,0 +1,345 @@
+/* scene1.css - Entrance & Unlock Experience */
+
+.scene1-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+}
+
+/* Central Stage Container */
+.scene1-stage {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: auto 0;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: stageEntrance var(--duration-cinematic) var(--ease-cinematic) forwards 0.25s;
+}
+
+@keyframes stageEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Text Block */
+.scene1-header {
+  margin-bottom: 36px;
+  transition: opacity var(--duration-slow) var(--ease-cinematic), transform var(--duration-slow) var(--ease-cinematic);
+}
+
+.scene1-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--color-text-main);
+  margin-bottom: 14px;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.scene1-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.925rem, 2vw, 1.025rem);
+  font-weight: 350;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* Form & Input Group */
+.scene1-form {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity var(--duration-slow) var(--ease-cinematic), transform var(--duration-slow) var(--ease-cinematic);
+}
+
+.scene1-input-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  background: var(--color-bg-input);
+  border: var(--border-hairline);
+  border-radius: var(--border-radius-md);
+  padding: 6px 6px 6px 16px;
+  box-shadow: var(--shadow-input);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: border-color var(--duration-normal) var(--ease-soft),
+              box-shadow var(--duration-normal) var(--ease-soft),
+              background var(--duration-normal) var(--ease-soft);
+}
+
+.scene1-input-wrapper:focus-within {
+  background: var(--color-bg-input-focus);
+  border-color: rgba(216, 184, 141, 0.45);
+  box-shadow: var(--shadow-input-focus);
+}
+
+/* Date Input Field */
+.scene1-input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--color-text-main);
+  background: transparent;
+  padding: 10px 4px;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.scene1-input::placeholder {
+  color: var(--color-text-placeholder);
+  letter-spacing: 0.1em;
+  font-weight: 350;
+  opacity: 1;
+  transition: opacity var(--duration-fast);
+}
+
+.scene1-input:focus::placeholder {
+  opacity: 0.6;
+}
+
+/* Enter Button */
+.scene1-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  font-family: var(--font-body);
+  font-size: 0.925rem;
+  font-weight: 450;
+  letter-spacing: 0.05em;
+  color: var(--color-text-main);
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-border);
+  border-radius: calc(var(--border-radius-md) - 4px);
+  transition: background var(--duration-fast) var(--ease-soft),
+              border-color var(--duration-fast) var(--ease-soft),
+              box-shadow var(--duration-fast) var(--ease-soft),
+              transform 150ms var(--ease-soft);
+  white-space: nowrap;
+}
+
+.scene1-button:hover {
+  background: rgba(216, 184, 141, 0.18);
+  border-color: rgba(216, 184, 141, 0.4);
+  box-shadow: var(--shadow-button-hover);
+}
+
+.scene1-button:active {
+  transform: scale(0.975);
+}
+
+.scene1-button:focus-visible {
+  outline: 2px solid var(--color-accent-amber);
+  outline-offset: 2px;
+}
+
+/* Gentle feedback message */
+.scene1-feedback-area {
+  min-height: 32px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene1-feedback {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 350;
+  color: var(--color-feedback-gentle);
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity var(--duration-normal) var(--ease-soft),
+              transform var(--duration-normal) var(--ease-soft);
+  pointer-events: none;
+}
+
+.scene1-feedback.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gentle sway on incorrect submission */
+.scene1-input-wrapper.sway {
+  animation: gentleSway 450ms var(--ease-soft);
+  border-color: var(--color-feedback-border);
+}
+
+@keyframes gentleSway {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(2px); }
+}
+
+/* Success Transition State */
+.scene1-stage.unlocked .scene1-form {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity var(--duration-slow) var(--ease-cinematic),
+              transform var(--duration-slow) var(--ease-cinematic),
+              visibility 0s linear var(--duration-slow);
+}
+
+.scene1-stage.unlocked .scene1-header {
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity var(--duration-slow) var(--ease-cinematic),
+              transform var(--duration-slow) var(--ease-cinematic),
+              visibility 0s linear var(--duration-slow);
+}
+
+/* Success Message Container */
+.scene1-success-view {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--duration-cinematic) var(--ease-cinematic) 0.35s,
+              transform var(--duration-cinematic) var(--ease-cinematic) 0.35s;
+}
+
+.scene1-stage.unlocked .scene1-success-view {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+}
+
+.scene1-success-message {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5.5vw, 3.1rem);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.015em;
+  color: var(--color-text-main);
+  margin-bottom: 24px;
+  line-height: 1.25;
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.25);
+}
+
+/* Scene 2 Handoff Marker (clean integration point) */
+.scene1-handoff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--duration-slow) var(--ease-cinematic) 1.2s,
+              transform var(--duration-slow) var(--ease-cinematic) 1.2s;
+}
+
+.scene1-stage.unlocked .scene1-handoff {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene1-handoff-line {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(216, 184, 141, 0.45), transparent);
+}
+
+.scene1-handoff-prompt {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  animation: pulseSubtle 3s ease-in-out infinite;
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.9; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .scene1-container {
+    padding: 24px 18px;
+  }
+  
+  .scene1-header {
+    margin-bottom: 28px;
+  }
+
+  .scene1-input-wrapper {
+    padding: 5px 5px 5px 14px;
+    gap: 8px;
+  }
+
+  .scene1-input {
+    font-size: 0.975rem;
+    letter-spacing: 0.09em;
+    padding: 9px 2px;
+  }
+
+  .scene1-button {
+    padding: 9px 18px;
+    font-size: 0.875rem;
+  }
+  
+  .scene1-feedback {
+    font-size: 0.85rem;
+  }
+}
+
+/* Extreme compact screens (e.g. 320px) */
+@media (max-width: 350px) {
+  .scene1-input-wrapper {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .scene1-input {
+    text-align: center;
+  }
+
+  .scene1-button {
+    width: 100%;
+    padding: 10px;
+  }
+}
+

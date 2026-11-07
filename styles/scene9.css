@@ -1,0 +1,604 @@
+/* scene9.css - Scene 9: Final Scene — Until Our Next Memory */
+
+.scene9-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 90;
+  background-color: #04060d;
+  transition: opacity 2s var(--ease-cinematic), visibility 0s linear 2s;
+}
+
+.scene9-container.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 2s var(--ease-cinematic);
+}
+
+/* Custom Scrollbar */
+.scene9-container::-webkit-scrollbar {
+  width: 5px;
+}
+.scene9-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scene9-container::-webkit-scrollbar-thumb {
+  background: rgba(216, 184, 141, 0.2);
+  border-radius: 4px;
+}
+.scene9-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(216, 184, 141, 0.4);
+}
+
+/* Atmospheric Night Background with Central Warmth */
+.scene9-ambient-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background: 
+    radial-gradient(circle 600px at 50% 40%, rgba(55, 38, 26, 0.35) 0%, transparent 75%),
+    radial-gradient(circle 800px at 50% 20%, rgba(18, 28, 56, 0.5) 0%, transparent 80%),
+    radial-gradient(circle 900px at 50% 85%, rgba(14, 20, 36, 0.45) 0%, transparent 80%),
+    linear-gradient(180deg, #03050a 0%, #060913 50%, #03050a 100%);
+}
+
+.scene9-center-glow {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(216, 184, 141, 0.08) 0%, rgba(255, 230, 180, 0.03) 45%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.95); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Subtle Candle Flame from Scene 2 */
+.scene9-candle-memorial {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.8s var(--ease-cinematic), transform 1.8s var(--ease-cinematic);
+}
+
+.scene9-candle-memorial.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene9-flame-icon {
+  width: 24px;
+  height: 38px;
+  position: relative;
+}
+
+.scene9-flame-svg {
+  width: 100%;
+  height: 100%;
+  fill: url(#scene9-flame-grad);
+  filter: drop-shadow(0 0 10px rgba(255, 195, 110, 0.8)) drop-shadow(0 0 24px rgba(216, 184, 141, 0.5));
+  animation: flameGentleFlicker 3s ease-in-out infinite alternate;
+}
+
+@keyframes flameGentleFlicker {
+  0% { transform: scale(1) rotate(-1deg); }
+  50% { transform: scale(1.05, 0.96) rotate(1deg); }
+  100% { transform: scale(0.97, 1.04) rotate(-0.5deg); }
+}
+
+/* Scroll Flow Container */
+.scene9-scroll-flow {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 24px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 1. Opening Section */
+.scene9-opening-section {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.scene9-opening-line1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.8s var(--ease-cinematic), transform 1.8s var(--ease-cinematic);
+}
+
+.scene9-opening-line2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5.5vw, 3.2rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.3;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 2s var(--ease-cinematic), transform 2s var(--ease-cinematic);
+  text-shadow: 0 0 35px rgba(216, 184, 141, 0.28);
+}
+
+.scene9-opening-line1.revealed,
+.scene9-opening-line2.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene9-scroll-hint {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 1.6s var(--ease-cinematic) 1s;
+}
+
+.scene9-scroll-hint.revealed {
+  opacity: 1;
+}
+
+.scene9-scroll-hint-text {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.scene9-scroll-hint-arrow {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-text-subtle);
+  stroke-width: 1.5;
+  fill: none;
+  animation: bounceHint 2.4s ease-in-out infinite;
+}
+
+/* Base Card Styling for Scene 9 */
+.scene9-card {
+  position: relative;
+  width: 100%;
+  margin: 28px 0;
+  padding: 50px 38px;
+  background: rgba(12, 17, 30, 0.72);
+  border: 1px solid rgba(216, 184, 141, 0.22);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.75),
+    0 0 35px rgba(216, 184, 141, 0.12);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene9-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2. Main Message Card */
+.scene9-card-main {
+  text-align: left;
+}
+
+.scene9-salutation {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 25px rgba(216, 184, 141, 0.25);
+}
+
+.scene9-prose-block {
+  font-family: var(--font-body);
+  font-size: clamp(1.025rem, 2.3vw, 1.12rem);
+  font-weight: 350;
+  line-height: 1.85;
+  color: #d1c8bd;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.scene9-prose-highlight {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 3.4vw, 1.65rem);
+  font-style: italic;
+  color: var(--color-text-main);
+  line-height: 1.5;
+  padding: 14px 0 14px 18px;
+  border-left: 2px solid var(--color-accent-amber);
+  margin: 6px 0;
+}
+
+/* 3. Birthday Wish & Personal Closing Card */
+.scene9-card-wish {
+  text-align: left;
+}
+
+.scene9-wish-kicker {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-amber);
+  margin-bottom: 18px;
+}
+
+.scene9-wish-affirmations {
+  margin: 24px 0;
+  padding: 20px 0;
+  border-top: 1px solid rgba(216, 184, 141, 0.15);
+  border-bottom: 1px solid rgba(216, 184, 141, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scene9-affirmation-line1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+  font-style: italic;
+  color: var(--color-text-main);
+}
+
+.scene9-affirmation-line2 {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: #dfc29e;
+  font-weight: 450;
+  letter-spacing: 0.04em;
+}
+
+.scene9-personal-closing {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scene9-closing-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3.8vw, 1.8rem);
+  font-style: italic;
+  color: var(--color-text-main);
+}
+
+.scene9-closing-body {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #d1c8bd;
+}
+
+.scene9-closing-wish {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4.2vw, 2.15rem);
+  font-style: italic;
+  font-weight: 600;
+  color: #dfc29e;
+  margin-top: 8px;
+  text-shadow: 0 0 30px rgba(223, 194, 158, 0.3);
+}
+
+/* 4. Final Signature Block */
+.scene9-signature-block {
+  width: 100%;
+  margin: 36px 0 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene9-signature-block.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene9-valediction {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 350;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+
+.scene9-signature-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5.5vw, 2.85rem);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-text-main);
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+  text-shadow: 0 0 30px rgba(216, 184, 141, 0.35);
+}
+
+.scene9-signature-date {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  color: var(--color-accent-amber);
+  opacity: 0.8;
+}
+
+/* 5. The Final Interaction ("Keep this memory") */
+.scene9-interactive-section {
+  width: 100%;
+  margin: 30px 0 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene9-interactive-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene9-keep-btn {
+  padding: 14px 32px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 450;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  background: rgba(216, 184, 141, 0.1);
+  border: 1px solid rgba(216, 184, 141, 0.35);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-soft);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.scene9-keep-btn:hover {
+  background: rgba(216, 184, 141, 0.2);
+  border-color: rgba(216, 184, 141, 0.7);
+  box-shadow: 0 0 25px rgba(216, 184, 141, 0.3);
+  transform: translateY(-2px);
+}
+
+.scene9-keep-btn.activated {
+  background: rgba(216, 184, 141, 0.25);
+  border-color: rgba(216, 184, 141, 0.9);
+  box-shadow: 0 0 35px rgba(216, 184, 141, 0.45);
+  transform: scale(1.03);
+}
+
+.scene9-memory-kept-card {
+  margin-top: 26px;
+  max-width: 540px;
+  padding: 30px 24px;
+  background: radial-gradient(circle at 50% 50%, rgba(26, 36, 62, 0.85) 0%, rgba(10, 14, 25, 0.92) 100%);
+  border: 1px solid rgba(216, 184, 141, 0.35);
+  border-radius: var(--border-radius-md);
+  box-shadow: 
+    0 16px 45px -8px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(216, 184, 141, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  pointer-events: none;
+  display: none;
+  transition: opacity 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+}
+
+.scene9-memory-kept-card.revealed {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.scene9-kept-text1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3.2vw, 1.6rem);
+  font-style: italic;
+  color: var(--color-text-main);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.scene9-kept-text2 {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* 6. The Final Static Screen */
+.scene9-final-screen {
+  position: relative;
+  width: 100%;
+  margin: 50px 0 30px;
+  padding: 65px 36px 50px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 30%, rgba(32, 28, 48, 0.7) 0%, rgba(8, 11, 20, 0.9) 80%);
+  border: 1px solid rgba(216, 184, 141, 0.3);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 
+    0 24px 60px -10px rgba(0, 0, 0, 0.85),
+    0 0 45px rgba(216, 184, 141, 0.15);
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1.4s var(--ease-cinematic), transform 1.4s var(--ease-cinematic);
+}
+
+.scene9-final-screen.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene9-final-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 6.2vw, 3.5rem);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 40px rgba(216, 184, 141, 0.35);
+}
+
+.scene9-final-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 3.6vw, 1.8rem);
+  font-style: italic;
+  color: #dfc29e;
+  line-height: 1.55;
+  max-width: 540px;
+  margin: 0 auto 34px;
+  text-shadow: 0 0 25px rgba(223, 194, 158, 0.25);
+}
+
+.scene9-final-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(216, 184, 141, 0.5), transparent);
+  margin: 0 auto 32px;
+}
+
+.scene9-final-next {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3.2vw, 1.55rem);
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: 40px;
+}
+
+.scene9-final-footer {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin-bottom: 36px;
+}
+
+/* 7. Understated Replay Control */
+.scene9-replay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid rgba(216, 184, 141, 0.22);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-soft);
+}
+
+.scene9-replay-btn:hover {
+  color: var(--color-text-main);
+  border-color: rgba(216, 184, 141, 0.6);
+  background: rgba(216, 184, 141, 0.08);
+  box-shadow: 0 0 18px rgba(216, 184, 141, 0.2);
+  transform: translateY(-2px);
+}
+
+.scene9-replay-btn:focus-visible {
+  outline: 2px solid var(--color-accent-amber);
+  outline-offset: 4px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .scene9-scroll-flow {
+    padding: 60px 16px 120px;
+  }
+
+  .scene9-card {
+    padding: 36px 20px;
+    margin: 20px 0;
+  }
+
+  .scene9-final-screen {
+    padding: 48px 20px 36px;
+  }
+
+  .scene9-prose-highlight {
+    padding-left: 12px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .scene9-opening-line1,
+  .scene9-opening-line2,
+  .scene9-candle-memorial,
+  .scene9-card,
+  .scene9-signature-block,
+  .scene9-interactive-section,
+  .scene9-final-screen {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+
+  .scene9-scroll-hint-arrow,
+  .scene9-flame-svg,
+  .scene9-center-glow {
+    animation: none !important;
+  }
+}
+

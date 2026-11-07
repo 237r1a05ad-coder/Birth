@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#090a0c">
+  <meta name="robots" content="noindex, nofollow">
+  <title>A little something</title>
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;350;400;450;500&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/variables.css">
+  <link rel="stylesheet" href="./styles/ambient.css">
+  <link rel="stylesheet" href="./styles/scene1.css">
+  <link rel="stylesheet" href="./styles/scene2.css">
+  <link rel="stylesheet" href="./styles/scene3.css">
+  <link rel="stylesheet" href="./styles/scene4.css">
+  <link rel="stylesheet" href="./styles/scene5.css">
+  <link rel="stylesheet" href="./styles/scene6.css">
+  <link rel="stylesheet" href="./styles/scene7.css">
+  <link rel="stylesheet" href="./styles/scene8.css">
+  <link rel="stylesheet" href="./styles/scene9.css">
+  <link rel="stylesheet" href="./styles/navigation.css">
+</head>
+<body>
+  <!-- Ambient Atmospheric Canvas & Film Grain Layer -->
+  <div class="ambient-container" aria-hidden="true">
+    <div class="ambient-gradient"></div>
+    <canvas id="ambient-canvas" class="ambient-canvas"></canvas>
+    <div class="ambient-grain"></div>
+    <div class="ambient-vignette"></div>
+  </div>
+
+  <!-- Universal Floating Navigation Bar (Active for Scenes 2 through 9) -->
+  <nav class="global-nav-bar" id="global-nav-bar" aria-label="Experience chapter navigation">
+    <button type="button" class="global-nav-btn global-nav-btn-back" id="global-nav-back" aria-label="Go back to previous chapter">
+      <svg class="nav-arrow-icon" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>Back</span>
+    </button>
+
+    <div class="global-nav-tracker" aria-live="polite">
+      <span class="nav-chapter-badge" id="global-nav-badge">Chapter 2 of 9</span>
+      <span class="nav-chapter-name" id="global-nav-title">Birthday Surprise</span>
+    </div>
+
+    <button type="button" class="global-nav-btn global-nav-btn-next" id="global-nav-next" aria-label="Continue to next chapter">
+      <span>Next</span>
+      <svg class="nav-arrow-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </nav>
+
+  <!-- Scene 1: Entrance / Unlock Stage -->
+  <main class="scene1-container">
+    <div class="scene1-stage" id="scene1-stage">
+      
+      <!-- Opening Badge & Text Block -->
+      <header class="scene1-header">
+        <div class="scene1-badge">
+          <span class="scene1-badge-dot">✦</span>
+          <span>A 9-Chapter Digital Memory Experience</span>
+        </div>
+        <h1 class="scene1-title">A little something for you.</h1>
+        <p class="scene1-subtitle">Before you enter, there's one small thing I need to know.</p>
+      </header>
+
+      <!-- Date Input Form -->
+      <form class="scene1-form" novalidate>
+        <div class="scene1-input-wrapper">
+          <label for="dob-input" class="sr-only">Date of birth in day, month, year format</label>
+          <input 
+            type="text" 
+            id="dob-input"
+            class="scene1-input" 
+            placeholder="DD / MM / YYYY" 
+            maxlength="14"
+            aria-describedby="scene1-feedback"
+            aria-required="true"
+          >
+          <button type="submit" class="scene1-button" id="enter-btn">Enter →</button>
+        </div>
+
+        <!-- Helpful Guide so she understands and never leaves -->
+        <div class="scene1-guide">
+          <p class="scene1-guide-text">Type your date of birth or tap the hint below to unlock</p>
+          <button type="button" class="scene1-hint-pill" id="scene1-hint-btn" aria-label="Use birthday hint 11 November 2005">
+            <span>💡 Hint: 11 / 11 / 2005 (Tap to fill)</span>
+          </button>
+        </div>
+
+        <!-- Gentle feedback notification -->
+        <div class="scene1-feedback-area" aria-live="polite">
+          <p class="scene1-feedback" id="scene1-feedback"></p>
+        </div>
+      </form>
+
+      <!-- Success View (Revealed smoothly on unlock) -->
+      <div class="scene1-success-view" aria-hidden="true">
+        <p class="scene1-success-message">I knew it was you.</p>
+        
+        <!-- Clean Handoff Point for Future Scene 2 -->
+        <div class="scene1-handoff" id="scene2-mount" data-ready="false">
+          <div class="scene1-handoff-line"></div>
+          <span class="scene1-handoff-prompt">Entering memory space</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scene 2: The Birthday Reveal & Candle Blowing Experience -->
+  <section class="scene2-container" aria-label="Birthday celebration">
+    <div class="scene2-stage">
+      
+      <!-- Birthday Title Message -->
+      <header class="scene2-header">
+        <h1 class="scene2-title">Happy Birthday, Harshita</h1>
+      </header>
+
+      <!-- Cake Viewport with Ambient Candlelight -->
+      <div class="scene2-cake-viewport">
+        <div class="scene2-candle-ambient" aria-hidden="true"></div>
+        
+        <svg class="scene2-cake-svg" viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Artisanal birthday cake with glowing candles">
+          <defs>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+            </filter>
+            <filter id="flameGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <radialGradient id="plateShadow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#000000" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#000000" stop-opacity="0.8" />
+            </radialGradient>
+            <linearGradient id="plateRim" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2a2725" />
+              <stop offset="50%" stop-color="#c5a059" stop-opacity="0.55" />
+              <stop offset="100%" stop-color="#1e1c1b" />
+            </linearGradient>
+            <linearGradient id="plateBase" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#22201e" />
+              <stop offset="100%" stop-color="#121110" />
+            </linearGradient>
+
+            <linearGradient id="cakeTopGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FAF4EB" />
+              <stop offset="100%" stop-color="#E2D6C5" />
+            </linearGradient>
+            <linearGradient id="cakeSideGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#BAAA97" />
+              <stop offset="25%" stop-color="#ECE3D6" />
+              <stop offset="70%" stop-color="#D4C4B1" />
+              <stop offset="100%" stop-color="#9B8A78" />
+            </linearGradient>
+
+            <linearGradient id="candleWax" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#DFD5C6" />
+              <stop offset="50%" stop-color="#FAF5EE" />
+              <stop offset="100%" stop-color="#B8AA97" />
+            </linearGradient>
+
+            <radialGradient id="flameInner" cx="50%" cy="80%" r="60%">
+              <stop offset="0%" stop-color="#FFFFFF" />
+              <stop offset="35%" stop-color="#FFF2A8" />
+              <stop offset="75%" stop-color="#FFB347" />
+              <stop offset="100%" stop-color="#FF6224" />
+            </radialGradient>
+          </defs>
+
+          <!-- 1. Pedestal Stand & Base Plate -->
+          <g class="cake-base-plate">
+            <ellipse cx="200" cy="320" rx="145" ry="24" fill="url(#plateShadow)" filter="url(#softShadow)" />
+            <path d="M 175,295 C 175,310 160,318 150,320 L 250,320 C 240,318 225,310 225,295 Z" fill="url(#plateBase)" />
+            <ellipse cx="200" cy="285" rx="140" ry="20" fill="url(#plateRim)" />
+            <ellipse cx="200" cy="282" rx="136" ry="18" fill="url(#plateBase)" />
+          </g>
+
+          <!-- 2. Cake Body Group -->
+          <g class="cake-body-group">
+            <path d="M 85,190 C 85,224 315,224 315,190 L 315,260 C 315,294 85,294 85,260 Z" fill="url(#cakeSideGrad)" />
+            <path d="M 85,260 C 85,294 315,294 315,260" stroke="#F5EDE2" stroke-width="2" stroke-opacity="0.3" fill="none" />
+            <ellipse cx="200" cy="190" rx="115" ry="32" fill="url(#cakeTopGrad)" />
+            <ellipse cx="200" cy="190" rx="114" ry="31" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.5" fill="none" />
+          </g>
+
+          <!-- 3. Left Candle (x = 156) -->
+          <g id="candle-group-left" class="candle-assembly">
+            <rect x="153" y="132" width="6" height="52" rx="2" fill="url(#candleWax)" />
+            <ellipse cx="156" cy="132" rx="3" ry="1.2" fill="#E8DEC8" />
+            <path d="M 156,132 Q 155,124 156,120" stroke="#332B25" stroke-width="1.5" stroke-linecap="round" fill="none" />
+            <path class="smoke-wisp" d="M 156,120 Q 153,105 158,95 Q 163,85 156,70" stroke="rgba(200, 190, 180, 0.45)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+            <g id="flame-left" class="candle-flame-group">
+              <path d="M 156,102 C 151,111 150,118 153,121 C 156,124 158,123 159,121 C 162,118 161,111 156,102 Z" fill="url(#flameInner)" filter="url(#flameGlow)" />
+              <ellipse cx="156" cy="121" rx="2" ry="1" fill="#4B9CD3" opacity="0.65" />
+              <ellipse cx="156" cy="118" rx="1.5" ry="3" fill="#FFFFFF" opacity="0.9" />
+            </g>
+          </g>
+
+          <!-- 4. Right Candle (x = 244) -->
+          <g id="candle-group-right" class="candle-assembly">
+            <rect x="241" y="132" width="6" height="52" rx="2" fill="url(#candleWax)" />
+            <ellipse cx="244" cy="132" rx="3" ry="1.2" fill="#E8DEC8" />
+            <path d="M 244,132 Q 245,124 244,120" stroke="#332B25" stroke-width="1.5" stroke-linecap="round" fill="none" />
+            <path class="smoke-wisp" d="M 244,120 Q 247,105 242,95 Q 237,85 244,70" stroke="rgba(200, 190, 180, 0.45)" stroke-width="1.5" stroke-linecap="round" fill="none" />
+            <g id="flame-right" class="candle-flame-group">
+              <path d="M 244,102 C 239,111 238,118 241,121 C 244,124 246,123 247,121 C 250,118 249,111 244,102 Z" fill="url(#flameInner)" filter="url(#flameGlow)" />
+              <ellipse cx="244" cy="121" rx="2" ry="1" fill="#4B9CD3" opacity="0.65" />
+              <ellipse cx="244" cy="118" rx="1.5" ry="3" fill="#FFFFFF" opacity="0.9" />
+            </g>
+          </g>
+
+          <!-- 5. Center Candle (tallest, primary, x = 200) -->
+          <g id="candle-group-center" class="candle-assembly">
+            <rect x="197" y="118" width="6.5" height="66" rx="2" fill="url(#candleWax)" />
+            <ellipse cx="200" cy="118" rx="3.25" ry="1.3" fill="#E8DEC8" />
+            <path d="M 200,118 Q 199,109 200,104" stroke="#332B25" stroke-width="1.6" stroke-linecap="round" fill="none" />
+            <path class="smoke-wisp" d="M 200,104 Q 197,88 203,78 Q 208,68 200,52" stroke="rgba(200, 190, 180, 0.5)" stroke-width="1.6" stroke-linecap="round" fill="none" />
+            <g id="flame-center" class="candle-flame-group">
+              <path d="M 200,83 C 194,93 193,101 196.5,104.5 C 200,108 202.5,107 204,104.5 C 207,101 206,93 200,83 Z" fill="url(#flameInner)" filter="url(#flameGlow)" />
+              <ellipse cx="200" cy="105" rx="2.5" ry="1.2" fill="#4B9CD3" opacity="0.75" />
+              <ellipse cx="200" cy="101" rx="1.8" ry="3.5" fill="#FFFFFF" opacity="0.95" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- 3. The Wish & Interactive Candle-Blowing Section -->
+      <div class="scene2-interaction-area">
+        <p class="scene2-wish-prompt">Make a wish.</p>
+        <p class="scene2-instruction">Take a breath… and blow out the candles.</p>
+
+        <div class="scene2-actions">
+          <button type="button" class="scene2-mic-btn" id="mic-blow-btn" aria-label="Enable microphone to blow out candles">
+            <svg class="scene2-mic-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+            <span id="mic-btn-text">Enable microphone to blow</span>
+          </button>
+          
+          <button type="button" class="scene2-fallback-btn" id="fallback-blow-btn">or tap to blow out the candles</button>
+        </div>
+      </div>
+
+      <!-- 4. Post-Extinguish Sincere Wish Reveal -->
+      <div class="scene2-post-wish" aria-live="polite">
+        <p class="scene2-wish-line1">Whatever you wished for…</p>
+        <p class="scene2-wish-line2">I hope it finds its way to you.</p>
+        <div class="scene-bottom-nav">
+          <button type="button" class="scene-btn-back" data-target-scene="1">← Back to Entrance</button>
+          <button type="button" class="scene2-continue-prompt scene-btn-next-highlight" id="scene2-proceed-btn">Continue into our story →</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scene 3: The Story Begins (6th Class & The Years Across Screens) -->
+  <section class="scene3-container" aria-label="Our story: 6th class and the years across screens">
+    <div class="scene3-memory-layer" aria-hidden="true"></div>
+
+    <div class="scene3-scroll-flow">
+      
+      <!-- Prologue: Going backward in time -->
+      <div class="scene3-prologue-section">
+        <p class="scene3-prologue-line1">But before today…</p>
+        <p class="scene3-prologue-line2">There was a beginning.</p>
+
+        <div class="scene3-scroll-hint" aria-hidden="true">
+          <span class="scene3-scroll-hint-text">Scroll to begin</span>
+          <svg class="scene3-scroll-hint-arrow" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Timeline & Narrative Flow -->
+      <div class="scene3-timeline-wrap">
+        <div class="scene3-timeline-line" aria-hidden="true"></div>
+
+        <!-- Chapter Node 1: 6th Class -->
+        <article class="scene3-card scene3-card-chapter">
+          <div class="scene3-node-dot scene3-card-node-top" aria-hidden="true"></div>
+          <span class="scene3-chapter-tag">The Beginning</span>
+          <h2 class="scene3-chapter-title">6th Class</h2>
+          <p class="scene3-chapter-sub">That's where our story began.</p>
+          <p class="scene3-chapter-reflection">I don't think either of us knew we'd still be here, all these years later.</p>
+        </article>
+
+        <!-- Milestones of Passing Time -->
+        <div class="scene3-milestones-row" aria-label="Passing of years">
+          <div class="scene3-milestone-item">
+            <div class="scene3-node-dot" aria-hidden="true"></div>
+            <span>Then…</span>
+          </div>
+          <div class="scene3-milestone-item">
+            <div class="scene3-node-dot" aria-hidden="true"></div>
+            <span>Years passed.</span>
+          </div>
+          <div class="scene3-milestone-item">
+            <div class="scene3-node-dot" aria-hidden="true"></div>
+            <span>Somehow, the friendship stayed.</span>
+          </div>
+        </div>
+
+        <!-- Chapter Node 2: Personal Narration -->
+        <article class="scene3-card">
+          <div class="scene3-node-dot scene3-card-node-top" aria-hidden="true"></div>
+          <p class="scene3-narration-thought">
+            Back then, I never imagined that a person I met in school would become someone I'd still be talking to years later.
+          </p>
+          
+          <div class="scene3-rhythm-list">
+            <p class="scene3-rhythm-line">Life changed.</p>
+            <p class="scene3-rhythm-line">Classes changed.</p>
+            <p class="scene3-rhythm-line">Years changed.</p>
+          </div>
+
+          <p class="scene3-rhythm-anchor">
+            But somehow, we kept finding our way back to the same conversations.
+          </p>
+        </article>
+
+        <!-- Chapter Node 3: The Unique Nature of Our Friendship -->
+        <article class="scene3-card">
+          <div class="scene3-node-dot scene3-card-node-top" aria-hidden="true"></div>
+          <p class="scene3-unique-lead">There's something funny about our story.</p>
+          
+          <div class="scene3-shares-flow">
+            <p class="scene3-share-text">We've shared years of conversations…</p>
+            <p class="scene3-share-text">countless problems…</p>
+            <p class="scene3-share-text">random laughs…</p>
+            <p class="scene3-share-text">and memories…</p>
+          </div>
+
+          <p class="scene3-share-highlight">
+            without ever actually meeting in person.
+          </p>
+        </article>
+
+        <!-- Chapter Node 4: Emotional Conclusion of Scene 3 -->
+        <article class="scene3-card scene3-card-conclusion">
+          <p class="scene3-conclusion-line1">
+            Maybe distance isn't always measured in kilometres.
+          </p>
+          <p class="scene3-conclusion-line2">
+            Sometimes, it's just a screen between two people who still manage to feel close.
+          </p>
+        </article>
+
+        <!-- Clean Handoff Point for Scene 4 -->
+        <div class="scene3-handoff-point" id="scene4-mount" data-ready="false">
+          <div class="scene3-handoff-line"></div>
+          <div class="scene-bottom-nav">
+            <button type="button" class="scene-btn-back" data-target-scene="2">← Back to Birthday Surprise</button>
+            <button type="button" class="scene3-continue-prompt scene-btn-next-highlight" id="scene3-proceed-btn">Continue into our conversations →</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scene 4: The World of Conversations & Trust -->
+  <section class="scene4-container" aria-label="Our world of conversations and trust">
+    <div class="scene4-ambient-glow" aria-hidden="true"></div>
+
+    <div class="scene4-scroll-flow">
+      
+      <!-- Prologue: Transition into intimate conversations -->
+      <div class="scene4-prologue-section">
+        <p class="scene4-prologue-line1">And somewhere between all those years…</p>
+        <p class="scene4-prologue-line2">We created our own little world of conversations.</p>
+
+        <div class="scene4-scroll-hint" aria-hidden="true">
+          <span class="scene4-scroll-hint-text">Scroll to enter</span>
+          <svg class="scene4-scroll-hint-arrow" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- The Conversation Experience (Whispers of shared moments) -->
+      <div class="scene4-conversation-stage" aria-label="Whispers of shared conversations">
+        <div class="scene4-typing-indicator" aria-hidden="true">
+          <span class="scene4-typing-dot"></span>
+          <span class="scene4-typing-dot"></span>
+          <span class="scene4-typing-dot"></span>
+        </div>
+
+        <div class="scene4-chat-bubble left">Something happened today…</div>
+        <div class="scene4-chat-bubble left">Can I tell you something?</div>
+        <div class="scene4-chat-bubble left">I don't know what to do.</div>
+        <div class="scene4-chat-bubble right">Wait, listen to this 😂</div>
+        <div class="scene4-chat-bubble left">You're not going to believe what happened.</div>
+      </div>
+
+      <!-- The Trust Moment (Emotional Core) -->
+      <article class="scene4-card">
+        <p class="scene4-trust-lead">One thing I've always appreciated…</p>
+        <h3 class="scene4-trust-heading">The way you trust me with the things that matter to you.</h3>
+
+        <div class="scene4-trust-grid" aria-label="The things you share">
+          <div class="scene4-trust-pill">Your problems.</div>
+          <div class="scene4-trust-pill">Your worries.</div>
+          <div class="scene4-trust-pill">Your little victories.</div>
+          <div class="scene4-trust-pill">Even the things you might not tell everyone.</div>
+        </div>
+
+        <p class="scene4-trust-realization">
+          I don't know if you realize how much that means to me.
+        </p>
+
+        <p class="scene4-trust-gratitude">
+          But every time you choose to share something with me, I feel genuinely grateful that you trust me enough to listen.
+        </p>
+      </article>
+
+      <!-- The First-Person Connection -->
+      <article class="scene4-card">
+        <p class="scene4-firstperson-lead">Sometimes, when something happens…</p>
+        <h3 class="scene4-firstperson-highlight">I'm one of the first people you want to tell.</h3>
+        
+        <p class="scene4-firstperson-interlude">And honestly?</p>
+        <p class="scene4-firstperson-smile">That little thing makes me smile more than you probably know.</p>
+
+        <div class="scene4-firstperson-grounding">
+          <p class="scene4-grounding-line1">
+            It's not about being the first person to know everything.
+          </p>
+          <p class="scene4-grounding-line2">
+            It's about knowing that, in some small way, you feel comfortable sharing your world with me.
+          </p>
+        </div>
+      </article>
+
+      <!-- The Playful Humour Contrast -->
+      <div class="scene4-humour-header">
+        <p class="scene4-humour-lead">Okay, enough serious conversations for a moment.</p>
+        <p class="scene4-humour-sub">Because let's be honest…</p>
+      </div>
+
+      <div class="scene4-humour-grid" aria-label="Playful moments">
+        <div class="scene4-humour-card">
+          <span class="scene4-humour-bullet" aria-hidden="true"></span>
+          <span>Random conversations that go absolutely nowhere.</span>
+        </div>
+        <div class="scene4-humour-card">
+          <span class="scene4-humour-bullet" aria-hidden="true"></span>
+          <span>Laughing at things that probably aren't even funny.</span>
+        </div>
+        <div class="scene4-humour-card">
+          <span class="scene4-humour-bullet" aria-hidden="true"></span>
+          <span>Turning a simple topic into a never-ending discussion.</span>
+        </div>
+        <div class="scene4-humour-card">
+          <span class="scene4-humour-bullet" aria-hidden="true"></span>
+          <span>Being serious for approximately five seconds.</span>
+        </div>
+        <div class="scene4-humour-card">
+          <span class="scene4-humour-bullet" aria-hidden="true"></span>
+          <span>The kind of jokes that only make sense to us.</span>
+        </div>
+      </div>
+
+      <!-- Calm Ending of Scene 4 -->
+      <article class="scene4-card scene4-card-conclusion">
+        <p class="scene4-conclusion-lead">We may not have met face to face yet.</p>
+        <p class="scene4-conclusion-body">
+          But we've shared conversations, feelings, laughter, and pieces of our everyday lives.
+        </p>
+        <p class="scene4-conclusion-hope">
+          And I hope we never stop having them.
+        </p>
+        <p class="scene4-conclusion-anchor">
+          Because some connections are built one conversation at a time.
+        </p>
+      </article>
+
+      <!-- Clean Handoff Point for Scene 5 -->
+      <div class="scene4-handoff-point" id="scene5-mount" data-ready="false">
+        <div class="scene4-handoff-line"></div>
+        <div class="scene-bottom-nav">
+          <button type="button" class="scene-btn-back" data-target-scene="3">← Back to Our Story</button>
+          <button type="button" class="scene4-continue-prompt scene-btn-next-highlight" id="scene4-proceed-btn">Continue into our memories →</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scene 5: The Memory Gallery -->
+  <section class="scene5-container" aria-label="Our memories">
+    <div class="scene5-album-atmosphere" aria-hidden="true"></div>
+
+    <div class="scene5-scroll-flow">
+      
+      <!-- Prologue: Transition into memory album -->
+      <div class="scene5-prologue-section">
+        <p class="scene5-prologue-line1">And then there are the little moments…</p>
+        <p class="scene5-prologue-line2">The ones you wish you could keep forever.</p>
+
+        <div class="scene5-scroll-hint" aria-hidden="true">
+          <span class="scene5-scroll-hint-text">Scroll into memory</span>
+          <svg class="scene5-scroll-hint-arrow" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Introduction Header -->
+      <header class="scene5-header">
+        <h2 class="scene5-heading">A Few Memories, A Lifetime of Feelings.</h2>
+        <p class="scene5-subheading">Some moments don't need a thousand pictures to stay unforgettable.</p>
+      </header>
+
+      <!-- Main Photograph Presentation Showcase -->
+      <div class="scene5-photo-showcase" aria-label="Memory photograph">
+        <div class="scene5-frame-outer">
+          <div class="scene5-frame-inner">
+            <img 
+              src="./images/harshita-memory.jpg" 
+              alt="A cherished memory with Harshita" 
+              class="scene5-photo-img" 
+              id="scene5-photo" 
+              loading="lazy"
+            >
+            <div class="scene5-photo-fallback" id="scene5-fallback" aria-hidden="true">
+              <svg class="scene5-fallback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <span class="scene5-fallback-title">Memory Photograph</span>
+              <span class="scene5-fallback-hint">Place your image in /public/images/harshita-memory.jpg</span>
+            </div>
+          </div>
+          
+          <div class="scene5-caption-box">
+            <p class="scene5-caption-text">A little picture. A lot of memories.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Emotional Message -->
+      <article class="scene5-card">
+        <p class="scene5-narrative-lead">I may not have a hundred photographs with you…</p>
+        
+        <div class="scene5-rhythm-list">
+          <p class="scene5-rhythm-item">But I have years of conversations.</p>
+          <p class="scene5-rhythm-item">Countless little moments.</p>
+          <p class="scene5-rhythm-item">Random laughs.</p>
+          <p class="scene5-rhythm-item">Things we've shared.</p>
+          <p class="scene5-rhythm-climax">And memories that don't need photographs to be remembered.</p>
+        </div>
+
+        <div class="scene5-stay-anchor">
+          <p class="scene5-stay-line1">Because some memories are not stored in a gallery.</p>
+          <p class="scene5-stay-line2">They stay with us.</p>
+        </div>
+      </article>
+
+      <!-- Ending of Scene 5 -->
+      <article class="scene5-card scene5-card-conclusion">
+        <p class="scene5-conclusion-line1">Funny how one person can become part of so many little moments.</p>
+        <p class="scene5-conclusion-line2">And somehow, there are still so many memories waiting to happen.</p>
+      </article>
+
+      <!-- Clean Handoff Point for Scene 6 -->
+      <div class="scene5-handoff-point" id="scene6-mount" data-ready="false">
+        <div class="scene5-handoff-line"></div>
+        <div class="scene-bottom-nav">
+          <button type="button" class="scene-btn-back" data-target-scene="4">← Back to Conversations</button>
+          <button type="button" class="scene5-continue-prompt scene-btn-next-highlight" id="scene5-proceed-btn">Continue to things I never say →</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scene 6: Things I Never Say Enough -->
+  <section class="scene6-container" aria-label="Things I Never Say Enough">
+    <div class="scene6-ambient-atmosphere" aria-hidden="true"></div>
+
+    <div class="scene6-scroll-flow">
+      
+      <!-- Prologue: Transition into intimate letters -->
+      <div class="scene6-prologue-section">
+        <p class="scene6-prologue-line1">There are some things…</p>
+        <p class="scene6-prologue-line2">That I probably don't say enough.</p>
+        <p class="scene6-prologue-line3">But today, I want you to know them.</p>
+
+        <div class="scene6-scroll-hint" aria-hidden="true">
+          <span class="scene6-scroll-hint-text">Scroll to read</span>
+          <svg class="scene6-scroll-hint-arrow" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Introduction Header -->
+      <header class="scene6-header">
+        <h2 class="scene6-heading">Things I Never Say Enough</h2>
+        <p class="scene6-subheading">
+          Not every important feeling needs a special occasion to exist.<br>
+          Sometimes, we just forget to say the things that matter.
+        </p>
+      </header>
+
+      <!-- Interactive Personal Notes (5 Unfolding Letters) -->
+      <div class="scene6-notes-stack" aria-label="Personal letters">
+        
+        <!-- Note 1: Thank You -->
+        <article class="scene6-note-card">
+          <button type="button" class="scene6-note-toggle" aria-expanded="false" aria-controls="note-content-1">
+            <div class="scene6-note-header-left">
+              <span class="scene6-note-number">Note 01</span>
+              <h3 class="scene6-note-title">Thank you for trusting me.</h3>
+            </div>
+            <div class="scene6-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </button>
+          
+          <div class="scene6-note-drawer" id="note-content-1">
+            <div class="scene6-note-content-inner">
+              <div class="scene6-note-divider"></div>
+              <p class="scene6-note-text">Thank you for feeling comfortable enough to share your thoughts, worries, and little moments with me.
+
+I may not always have the perfect answers, but I genuinely appreciate that you trust me enough to listen.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Note 2: Your Strength -->
+        <article class="scene6-note-card">
+          <button type="button" class="scene6-note-toggle" aria-expanded="false" aria-controls="note-content-2">
+            <div class="scene6-note-header-left">
+              <span class="scene6-note-number">Note 02</span>
+              <h3 class="scene6-note-title">Never underestimate yourself.</h3>
+            </div>
+            <div class="scene6-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </button>
+          
+          <div class="scene6-note-drawer" id="note-content-2">
+            <div class="scene6-note-content-inner">
+              <div class="scene6-note-divider"></div>
+              <p class="scene6-note-text">I hope you always remember how much potential you have.
+
+Even on the days when things feel difficult, don't forget that you are capable of more than you sometimes give yourself credit for.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Note 3: The Little Things -->
+        <article class="scene6-note-card">
+          <button type="button" class="scene6-note-toggle" aria-expanded="false" aria-controls="note-content-3">
+            <div class="scene6-note-header-left">
+              <span class="scene6-note-number">Note 03</span>
+              <h3 class="scene6-note-title">It's the little things.</h3>
+            </div>
+            <div class="scene6-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </button>
+          
+          <div class="scene6-note-drawer" id="note-content-3">
+            <div class="scene6-note-content-inner">
+              <div class="scene6-note-divider"></div>
+              <p class="scene6-note-text">Sometimes it's not about big moments or special occasions.
+
+It's the random conversations, unexpected updates, silly jokes, and little things you share that make this friendship special to me.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Note 4: My Wish For You -->
+        <article class="scene6-note-card">
+          <button type="button" class="scene6-note-toggle" aria-expanded="false" aria-controls="note-content-4">
+            <div class="scene6-note-header-left">
+              <span class="scene6-note-number">Note 04</span>
+              <h3 class="scene6-note-title">I hope life is kind to you.</h3>
+            </div>
+            <div class="scene6-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </button>
+          
+          <div class="scene6-note-drawer" id="note-content-4">
+            <div class="scene6-note-content-inner">
+              <div class="scene6-note-divider"></div>
+              <p class="scene6-note-text">I hope you get opportunities that make you excited, people who genuinely appreciate you, reasons to smile, and the courage to chase everything you dream about.
+
+You deserve beautiful things in life.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Note 5: Always Here -->
+        <article class="scene6-note-card">
+          <button type="button" class="scene6-note-toggle" aria-expanded="false" aria-controls="note-content-5">
+            <div class="scene6-note-header-left">
+              <span class="scene6-note-number">Note 05</span>
+              <h3 class="scene6-note-title">One thing I want you to know.</h3>
+            </div>
+            <div class="scene6-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </button>
+          
+          <div class="scene6-note-drawer" id="note-content-5">
+            <div class="scene6-note-content-inner">
+              <div class="scene6-note-divider"></div>
+              <p class="scene6-note-text">Whatever changes in life, I hope we never lose this connection.
+
+Whether it's a random conversation, a serious discussion, or just checking in after a long day, I hope we keep finding reasons to talk.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- A Small Emotional Moment (The 6th Class Anchor) -->
+      <article class="scene6-card-moment">
+        <p class="scene6-moment-lead">I don't know if I say it often enough…</p>
+        <h3 class="scene6-moment-gratitude">But I'm genuinely glad our paths crossed back in 6th class.</h3>
+        <p class="scene6-moment-anchor">
+          And if I could keep one thing unchanged, it would be the fact that we never stopped talking.
+        </p>
+      </article>
+
+      <!-- Ending of Scene 6 -->
+      <article class="scene6-card-moment scene6-card-conclusion">
+        <p class="scene6-conclusion-line1">Some people make ordinary days a little better.</p>
+        <p class="scene6-conclusion-line2">And you are one of those people in my story.</p>
+      </article>
+
+      <!-- Clean Handoff Point for Scene 7 -->
+      <div class="scene6-handoff-point" id="scene7-mount" data-ready="false">
+        <div class="scene6-handoff-line"></div>
+        <div class="scene-bottom-nav">
+          <button type="button" class="scene-btn-back" data-target-scene="5">← Back to Memories</button>
+          <button type="button" class="scene6-continue-prompt scene-btn-next-highlight" id="scene6-proceed-btn">Continue to your personal letter →</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scene 7: The Personal Letter -->
+  <section class="scene7-container" aria-label="A personal letter from Prudhvi">
+    <div class="scene7-ambient-atmosphere" aria-hidden="true"></div>
+
+    <div class="scene7-scroll-flow">
+      
+      <!-- Prologue: Transition into personal letter -->
+      <div class="scene7-prologue-section">
+        <p class="scene7-prologue-line1">And now…</p>
+        <p class="scene7-prologue-line2">There is something I wanted to write to you.</p>
+        <p class="scene7-prologue-line3">Not just another birthday wish.</p>
+        <p class="scene7-prologue-line4">A little letter. From me to you.</p>
+
+        <div class="scene7-scroll-hint" aria-hidden="true">
+          <span class="scene7-scroll-hint-text">Scroll to your letter</span>
+          <svg class="scene7-scroll-hint-arrow" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- The Physical Envelope Presentation -->
+      <div class="scene7-envelope-section">
+        <div 
+          class="scene7-envelope-box" 
+          id="scene7-envelope-box" 
+          role="button" 
+          tabindex="0" 
+          aria-label="Open your letter" 
+          aria-expanded="false"
+        >
+          <div class="scene7-envelope">
+            <div class="scene7-envelope-flap" aria-hidden="true"></div>
+            <div class="scene7-wax-seal" aria-hidden="true">P</div>
+            <h2 class="scene7-envelope-to">To Harshita</h2>
+            <p class="scene7-envelope-sub">With a little love and a lot of memories.</p>
+          </div>
+        </div>
+        <div class="scene7-envelope-prompt" aria-hidden="true">
+          <span>Open your letter</span>
+        </div>
+      </div>
+
+      <!-- The Unfolded Letter Paper Sheet -->
+      <article class="scene7-letter-sheet" id="scene7-letter-sheet" aria-label="Personal letter from Prudhvi">
+        <h3 class="scene7-salutation">Hey Harshita,</h3>
+        
+        <div class="scene7-prose">
+          <p>First of all, a very, very happy birthday to you! ❤️</p>
+
+          <p>I honestly don't know where to begin because there are so many things I could say.</p>
+
+          <p>Think about it for a moment. We have been friends since 6th class. Back then, I never imagined that we would still be connected after all these years.</p>
+
+          <p>School days passed, years changed, life moved forward, and somehow our conversations never really stopped.</p>
+
+          <p>And the funniest part?</p>
+
+          <p>We still haven't met each other physically. Not even once!</p>
+
+          <p>Our friendship has existed through phone calls, messages, and screens. Yet, somehow, it has become such a meaningful part of my life.</p>
+
+          <p>One thing I genuinely appreciate about you is the trust you place in me.</p>
+
+          <p>Whenever something happens, whenever you have a problem, or whenever something is on your mind, you feel comfortable sharing it with me.</p>
+
+          <p>I don't know if you realize how much that means to me.</p>
+
+          <p>I may not always have the perfect advice or the right words, but I hope you always know that I will listen.</p>
+
+          <p>And please, don't ever think that you have to be happy all the time. You can have bad days, confusing days, and days when nothing seems to go right. That's life.</p>
+
+          <p>I hope you always give yourself the same kindness that you give to others.</p>
+
+          <p>Also, let's not forget all our random conversations, silly moments, and the times when we probably started talking about one thing and ended up somewhere completely different. 😂</p>
+
+          <p>I genuinely hope we never run out of things to talk about.</p>
+
+          <p>I don't know exactly what place I hold in your life, and I don't want to assume it either.</p>
+
+          <p>But I know what this friendship means to me.</p>
+
+          <p>I'm grateful that our paths crossed back in 6th class, and I'm even more grateful that we have managed to keep this connection alive all these years.</p>
+
+          <p>I hope you achieve everything you dream about.</p>
+
+          <p>I hope you meet wonderful people, experience beautiful things, find happiness in the little moments, and become everything you want to be.</p>
+
+          <p>And someday, I really hope we finally meet in person.</p>
+
+          <p>Imagine talking for years through a screen and then finally sitting together and laughing about all of it. That would be a memory worth waiting for.</p>
+
+          <p>No matter how busy life gets, I hope we keep checking on each other, sharing random updates, laughing at stupid things, and being part of each other's stories.</p>
+
+          <p>Here's to all the years behind us.</p>
+
+          <p>Here's to the memories we haven't made yet.</p>
+
+          <p>And here's to a friendship that I genuinely hope lasts a lifetime.</p>
+
+          <p>Happy Birthday once again, Harshita.</p>
+
+          <p>Stay happy. Stay strong. Keep smiling.</p>
+
+          <p>And never forget how special you are as a person.</p>
+        </div>
+
+        <div class="scene7-signature-block">
+          <p class="scene7-valediction">With lots of wishes and endless friendship,</p>
+          <p class="scene7-signature">Prudhvi ❤️</p>
+        </div>
+      </article>
+
+      <!-- Small Closing Message Beneath the Paper -->
+      <div class="scene7-after-letter">
+        <p class="scene7-after-line1">Some things are easier to write than to say.</p>
+        <p class="scene7-after-line2">So I'm glad I could leave these words here for you.</p>
+        <span class="scene7-keep-letter">Keep this little letter.</span>
+      </div>
+
+      <!-- Ending of Scene 7 -->
+      <article class="scene7-card-conclusion">
+        <h3 class="scene7-conclusion-lead">And this isn't really the end of our story.</h3>
+        
+        <div class="scene7-conclusion-list">
+          <p class="scene7-conclusion-item">We still have so many conversations left.</p>
+          <p class="scene7-conclusion-item">Too many jokes left to laugh at.</p>
+          <p class="scene7-conclusion-item">And one meeting we've still been waiting for.</p>
+        </div>
+
+        <p class="scene7-conclusion-anchor">
+          So let's save a little space for the memories still waiting for us.
+        </p>
+      </article>
+
+      <!-- Clean Handoff Point for Scene 8 -->
+      <div class="scene7-handoff-point" id="scene8-mount" data-ready="false">
+        <div class="scene7-handoff-line"></div>
+        <div class="scene-bottom-nav">
+          <button type="button" class="scene-btn-back" data-target-scene="6">← Back to Things Never Said</button>
+          <button type="button" class="scene7-continue-prompt scene-btn-next-highlight" id="scene7-proceed-btn">Step into the night sky →</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scene 8: The Promise of More Memories -->
+  <section class="scene8-container" aria-label="The Promise of More Memories">
+    <!-- Deep midnight sky atmosphere with moon glow, stars canvas & dreamy horizon -->
+    <div class="scene8-night-sky" aria-hidden="true">
+      <div class="scene8-sky-gradient"></div>
+      <div class="scene8-moon-glow"></div>
+      <canvas id="scene8-stars-canvas" class="scene8-stars-canvas"></canvas>
+      <div class="scene8-shooting-star" id="scene8-shooting-star"></div>
+      <div class="scene8-horizon-glow"></div>
+    </div>
+
+    <div class="scene8-scroll-flow">
+      
+      <!-- 1. Opening Section -->
+      <header class="scene8-opening-section">
+        <p class="scene8-opening-line1">One birthday wish isn't enough...</p>
+        <p class="scene8-opening-line2">Because I don't just wish you happiness for today.</p>
+        <p class="scene8-opening-line3">I hope life gives you countless beautiful days ahead.</p>
+
+        <div class="scene8-scroll-hint" aria-hidden="true">
+          <span class="scene8-scroll-hint-text">Scroll into the future</span>
+          <svg class="scene8-scroll-hint-arrow" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </header>
+
+      <!-- 2. Section 2 — More Conversations -->
+      <article class="scene8-card scene8-card-conversations">
+        <span class="scene8-card-kicker">Looking ahead</span>
+        <h2 class="scene8-card-heading">The conversations that don't end.</h2>
+
+        <div class="scene8-conversations-list">
+          <div class="scene8-conv-item" data-index="1">
+            <span class="scene8-conv-bullet">✦</span>
+            <p class="scene8-conv-text">More random conversations.</p>
+          </div>
+          <div class="scene8-conv-item" data-index="2">
+            <span class="scene8-conv-bullet">✦</span>
+            <p class="scene8-conv-text">More unexpected updates.</p>
+          </div>
+          <div class="scene8-conv-item" data-index="3">
+            <span class="scene8-conv-bullet">✦</span>
+            <p class="scene8-conv-text">More silly jokes.</p>
+          </div>
+          <div class="scene8-conv-item" data-index="4">
+            <span class="scene8-conv-bullet">✦</span>
+            <p class="scene8-conv-text">More serious talks.</p>
+          </div>
+          <div class="scene8-conv-item" data-index="5">
+            <span class="scene8-conv-bullet">✦</span>
+            <p class="scene8-conv-text">More moments where we forget how much time has passed.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Section 3 — The Meeting We've Been Waiting For -->
+      <article class="scene8-card scene8-card-meeting">
+        <p class="scene8-meeting-lead">There's just one little thing our memories are still waiting for...</p>
+        <h3 class="scene8-meeting-climax">To finally meet.</h3>
+        <p class="scene8-meeting-prose">
+          After all these years of talking through screens, I hope we get to sit across from each other someday, laugh about everything, and create a memory that doesn't need a phone to capture it.
+        </p>
+      </article>
+
+      <!-- 4. Section 4 — A Promise for the Future -->
+      <article class="scene8-card scene8-card-promise">
+        <span class="scene8-card-kicker">Through the years</span>
+        <div class="scene8-promise-prose">
+          <p>I don't know what the coming years will look like.</p>
+          <p>Life will change. We'll grow. We'll get busy.</p>
+          <p class="scene8-promise-highlight">
+            But I hope we never lose the comfort of checking in, sharing little things, and picking up a conversation as if no time has passed.
+          </p>
+        </div>
+
+        <div class="scene8-promise-anchor">
+          <p class="scene8-anchor-line1">Here's to the memories we've made...</p>
+          <p class="scene8-anchor-line2">And all the ones still waiting for us.</p>
+        </div>
+      </article>
+
+      <!-- 5. Section 5 — The Interactive Wishing Star -->
+      <div class="scene8-interactive-section">
+        <p class="scene8-star-instruction">There's one more wish I'd like to leave in the sky.</p>
+        
+        <button 
+          type="button" 
+          class="scene8-wishing-star-btn" 
+          id="scene8-wishing-star-btn"
+          aria-label="Make a wish on the star"
+          aria-expanded="false"
+        >
+          <div class="scene8-star-glow-halo"></div>
+          <svg class="scene8-star-icon" viewBox="0 0 40 40" aria-hidden="true">
+            <path d="M20 3 L24.5 15.5 L37 20 L24.5 24.5 L20 37 L15.5 24.5 L3 20 L15.5 15.5 Z" />
+          </svg>
+          <span class="scene8-star-btn-label">Tap the star</span>
+        </button>
+
+        <div class="scene8-star-reveal-card" id="scene8-star-reveal-card" aria-live="polite">
+          <p class="scene8-star-reveal-text">
+            Wherever life takes us, I hope it brings you happiness, good people, beautiful opportunities, and countless reasons to smile.
+          </p>
+        </div>
+      </div>
+
+      <!-- 6. Final Transition / Conclusion to Scene 9 -->
+      <article class="scene8-card scene8-card-conclusion">
+        <p class="scene8-conclusion-line1">Some stories don't need a perfect ending.</p>
+        <p class="scene8-conclusion-line2">Just a reason to keep going.</p>
+        <p class="scene8-conclusion-line3">And ours still has pages left to fill.</p>
+
+        <!-- Tasteful button to transition to Scene 9 -->
+        <div class="scene8-handoff-point" id="scene9-mount" data-ready="false">
+          <div class="scene8-handoff-line"></div>
+          <div class="scene-bottom-nav">
+            <button type="button" class="scene-btn-back" data-target-scene="7">← Back to Personal Letter</button>
+            <button type="button" class="scene8-continue-btn scene-btn-next-highlight" id="scene8-proceed-btn">
+              One Last Thing... →
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Scene 9: Final Scene — Until Our Next Memory -->
+  <section class="scene9-container" aria-label="Final scene: Until our next memory">
+    <!-- Deep midnight atmospheric background with warm central glow -->
+    <div class="scene9-ambient-atmosphere" aria-hidden="true">
+      <div class="scene9-center-glow"></div>
+    </div>
+
+    <div class="scene9-scroll-flow">
+      
+      <!-- 1. Opening Section with Subtle Candle Memorial -->
+      <header class="scene9-opening-section">
+        <div class="scene9-candle-memorial" aria-hidden="true">
+          <div class="scene9-flame-icon">
+            <svg class="scene9-flame-svg" viewBox="0 0 24 38">
+              <defs>
+                <linearGradient id="scene9-flame-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#e07a2a" />
+                  <stop offset="45%" stop-color="#ffd27d" />
+                  <stop offset="85%" stop-color="#fff8eb" />
+                </linearGradient>
+              </defs>
+              <path d="M12 2 C13 9 20 16 20 25 C20 32 16.5 36 12 36 C7.5 36 4 32 4 25 C4 16 11 9 12 2 Z"/>
+            </svg>
+          </div>
+        </div>
+
+        <p class="scene9-opening-line1">Before you leave...</p>
+        <p class="scene9-opening-line2">I just want to say one last thing.</p>
+
+        <div class="scene9-scroll-hint" aria-hidden="true">
+          <span class="scene9-scroll-hint-text">Scroll to read</span>
+          <svg class="scene9-scroll-hint-arrow" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </header>
+
+      <!-- 2. Main Message Card -->
+      <article class="scene9-card scene9-card-main">
+        <h2 class="scene9-salutation">Harshita,</h2>
+        
+        <div class="scene9-prose-block">
+          <p class="scene9-prose-highlight">Thank you for being a part of my story.</p>
+          
+          <p>
+            From those school days in 6th class to all the conversations we've shared since then, I'm genuinely grateful that our paths crossed.
+          </p>
+          
+          <p>
+            We may not have a hundred photographs together or memories from places we've visited side by side.
+          </p>
+          
+          <p>
+            But we have years of conversations, random laughter, shared thoughts, and little moments that mean something to me.
+          </p>
+          
+          <p>
+            And I hope there are many more ahead.
+          </p>
+        </div>
+      </article>
+
+      <!-- 3. Birthday Wish & Personal Closing Card -->
+      <article class="scene9-card scene9-card-wish">
+        <span class="scene9-wish-kicker">A quiet wish for you</span>
+        
+        <div class="scene9-prose-block">
+          <p>
+            On your birthday, I wish you a life filled with happiness, confidence, beautiful opportunities, genuine people, and everything your heart has been quietly hoping for.
+          </p>
+
+          <div class="scene9-wish-affirmations">
+            <p class="scene9-affirmation-line1">Never stop believing in yourself.</p>
+            <p class="scene9-affirmation-line2">Keep smiling. Keep growing. Keep being you.</p>
+          </div>
+
+          <div class="scene9-personal-closing">
+            <p class="scene9-closing-lead">And Harshita...</p>
+            <p class="scene9-closing-body">
+              Don't forget that somewhere in your story, there's a friend named Prudhvi who is really glad he got to know you.
+            </p>
+            <p class="scene9-closing-wish">Happy Birthday once again.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. The Final Signature -->
+      <div class="scene9-signature-block">
+        <p class="scene9-valediction">With lots of warmth,</p>
+        <p class="scene9-signature-name">Prudhvi ❤️</p>
+        <span class="scene9-signature-date">11.11.2026</span>
+      </div>
+
+      <!-- 5. The Final Interaction ("Keep this memory") -->
+      <div class="scene9-interactive-section">
+        <button 
+          type="button" 
+          class="scene9-keep-btn" 
+          id="scene9-keep-memory-btn"
+          aria-expanded="false"
+        >
+          Keep this memory ✦
+        </button>
+
+        <div class="scene9-memory-kept-card" id="scene9-memory-kept-card" aria-live="polite">
+          <p class="scene9-kept-text1">Some memories stay with us long after the screen goes dark.</p>
+          <p class="scene9-kept-text2">Thank you for being part of this little birthday journey.</p>
+        </div>
+      </div>
+
+      <!-- 6. The Final Static Screen -->
+      <div class="scene9-final-screen">
+        <h3 class="scene9-final-title">Happy Birthday, Harshita.</h3>
+        <p class="scene9-final-lead">Here's to you, to our friendship, and to all the memories still waiting to happen.</p>
+        
+        <div class="scene9-final-divider" aria-hidden="true"></div>
+
+        <p class="scene9-final-next">Until our next conversation...</p>
+
+        <p class="scene9-final-footer">Made with care, by Prudhvi.</p>
+
+        <!-- Optional Replay Experience -->
+        <div class="scene-bottom-nav">
+          <button type="button" class="scene-btn-back" data-target-scene="8">← Back to Night Sky</button>
+          <button type="button" class="scene9-replay-btn scene-btn-next-highlight" id="scene9-replay-btn" aria-label="Experience the birthday website again">
+            ↺ Experience it again
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Application Modules -->
+  <script type="module" src="./scripts/main.js"></script>
+</body>
+</html>

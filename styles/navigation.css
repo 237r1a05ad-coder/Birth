@@ -1,0 +1,335 @@
+/* navigation.css - Universal Navigation, History Controls & Highlighted Actions */
+
+/* 1. Global Floating Navigation Bar (Scenes 2 to 9) */
+.global-nav-bar {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 14px;
+  max-width: min(92vw, 560px);
+  width: max-content;
+  background: rgba(10, 14, 24, 0.85);
+  border: 1px solid rgba(216, 184, 141, 0.32);
+  border-radius: 999px;
+  box-shadow: 
+    0 12px 35px -6px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(216, 184, 141, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-cinematic), transform 0.4s var(--ease-cinematic), visibility 0.4s;
+}
+
+.global-nav-bar.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Nav Action Buttons (Back & Next) */
+.global-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  background: rgba(216, 184, 141, 0.1);
+  border: 1px solid rgba(216, 184, 141, 0.3);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-soft);
+  white-space: nowrap;
+}
+
+.global-nav-btn:hover {
+  background: rgba(216, 184, 141, 0.22);
+  border-color: rgba(216, 184, 141, 0.75);
+  box-shadow: 0 0 16px rgba(216, 184, 141, 0.25);
+  transform: translateY(-1px);
+}
+
+.global-nav-btn:active {
+  transform: translateY(1px);
+}
+
+.global-nav-btn:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.global-nav-btn-next {
+  background: linear-gradient(135deg, rgba(216, 184, 141, 0.22) 0%, rgba(180, 140, 95, 0.3) 100%);
+  border-color: rgba(216, 184, 141, 0.55);
+  box-shadow: 0 0 12px rgba(216, 184, 141, 0.18);
+}
+
+.nav-arrow-icon {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Center Chapter Tracker */
+.global-nav-tracker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 6px;
+  user-select: none;
+  min-width: 110px;
+}
+
+.nav-chapter-badge {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-amber);
+  line-height: 1.2;
+}
+
+.nav-chapter-name {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-main);
+  line-height: 1.2;
+  white-space: nowrap;
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 2. In-Page Bottom Navigation (At bottom of each section) */
+.scene-bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.scene-btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 22px;
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(216, 184, 141, 0.28);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-soft);
+}
+
+.scene-btn-back:hover {
+  color: var(--color-text-main);
+  background: rgba(216, 184, 141, 0.14);
+  border-color: rgba(216, 184, 141, 0.6);
+  box-shadow: 0 0 16px rgba(216, 184, 141, 0.15);
+  transform: translateY(-2px);
+}
+
+.scene-btn-next-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff9f0 !important;
+  background: linear-gradient(135deg, rgba(216, 184, 141, 0.32) 0%, rgba(180, 140, 95, 0.44) 100%) !important;
+  border: 1px solid rgba(216, 184, 141, 0.75) !important;
+  border-radius: 999px !important;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-soft);
+  box-shadow: 
+    0 4px 18px rgba(0, 0, 0, 0.4),
+    0 0 22px rgba(216, 184, 141, 0.28) !important;
+  animation: pulseContinueBtn 3.5s ease-in-out infinite;
+}
+
+.scene-btn-next-highlight:hover {
+  background: linear-gradient(135deg, rgba(216, 184, 141, 0.5) 0%, rgba(180, 140, 95, 0.65) 100%) !important;
+  border-color: rgba(255, 235, 200, 0.95) !important;
+  box-shadow: 0 0 32px rgba(216, 184, 141, 0.5) !important;
+  transform: translateY(-2px);
+}
+
+@keyframes pulseContinueBtn {
+  0%, 100% {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 16px rgba(216, 184, 141, 0.22);
+    border-color: rgba(216, 184, 141, 0.65);
+  }
+  50% {
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.5), 0 0 30px rgba(216, 184, 141, 0.45);
+    border-color: rgba(255, 235, 200, 0.9);
+  }
+}
+
+/* 3. Scene 1 Reassurance & Friendly Guidance */
+.scene1-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(216, 184, 141, 0.08);
+  border: 1px solid rgba(216, 184, 141, 0.22);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-amber);
+  margin-bottom: 22px;
+}
+
+.scene1-badge-dot {
+  font-size: 0.85rem;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.scene1-guide {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.scene1-guide-text {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.scene1-hint-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(216, 184, 141, 0.1);
+  border: 1px dashed rgba(216, 184, 141, 0.4);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: #dfc29e;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-soft);
+}
+
+.scene1-hint-pill:hover {
+  background: rgba(216, 184, 141, 0.22);
+  border-color: rgba(216, 184, 141, 0.7);
+  box-shadow: 0 0 16px rgba(216, 184, 141, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Scene 1 Enter Button Highlight */
+.scene1-button {
+  background: linear-gradient(135deg, rgba(216, 184, 141, 0.3) 0%, rgba(180, 140, 95, 0.4) 100%) !important;
+  border: 1px solid rgba(216, 184, 141, 0.7) !important;
+  box-shadow: 0 0 16px rgba(216, 184, 141, 0.25) !important;
+  animation: enterBtnGlow 3s ease-in-out infinite;
+}
+
+@keyframes enterBtnGlow {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(216, 184, 141, 0.2);
+    border-color: rgba(216, 184, 141, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(216, 184, 141, 0.45);
+    border-color: rgba(255, 235, 200, 0.85);
+  }
+}
+
+/* 4. Responsive adjustments for mobile */
+@media (max-width: 480px) {
+  .global-nav-bar {
+    top: 10px;
+    padding: 5px 10px;
+    gap: 6px;
+    width: 95vw;
+  }
+
+  .global-nav-btn {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .nav-chapter-name {
+    display: none; /* Hide long name on mobile, keep Chapter X of 9 badge */
+  }
+
+  .nav-chapter-tracker {
+    min-width: 80px;
+  }
+
+  .nav-chapter-badge {
+    font-size: 0.72rem;
+  }
+
+  .scene-bottom-nav {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .scene-btn-back,
+  .scene-btn-next-highlight {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* 5. Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .global-nav-bar,
+  .global-nav-btn,
+  .scene-btn-back,
+  .scene-btn-next-highlight {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
