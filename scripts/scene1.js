@@ -52,24 +52,6 @@ export class Scene1 {
     this.inputElement.addEventListener('focus', () => {
       this.clearFeedback();
     });
-
-    // Helper hint pill: fills date when tapped
-    const hintBtn = document.getElementById('scene1-hint-btn');
-    if (hintBtn) {
-      hintBtn.addEventListener('click', () => {
-        if (this.isUnlocked) return;
-        this.inputElement.value = '11 / 11 / 2005';
-        this.clearFeedback();
-        this.dateController.input.value = '11 / 11 / 2005';
-        this.validate({
-          isValidFormat: true,
-          day: 11,
-          month: 11,
-          year: 2005,
-          raw: '11112005'
-        });
-      });
-    }
   }
 
   handleInputChange() {
